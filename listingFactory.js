@@ -19,3 +19,5 @@ angular.module('listings', []).factory('Listings', function($http) {
 
   return methods;
 });
+
+//Justin's change

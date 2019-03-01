@@ -95,7 +95,4 @@ In `server/routes/listings.server.routes.js`, you will find code that specifies 
 6. Make sure your server is functioning correctly by starting with the command: `node server.js`
 7. Check your user interface: `http://localhost:8080/`.
 
-
-
-fernando!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
+troy fischer added

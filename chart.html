@@ -1,0 +1,51 @@
+<html>
+  <head>
+    <!--Load the AJAX API-->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+
+      // Load the Visualization API and the corechart package.
+      google.charts.load('current', {'packages':['corechart']});
+
+      // Set a callback to run when the Google Visualization API is loaded.
+      google.charts.setOnLoadCallback(drawChart);
+
+      // Callback that creates and populates a data table,
+      // instantiates the pie chart, passes in the data and
+      // draws it.
+      function drawChart() {
+        // Create the data table.
+        var data = google.visualization.arrayToDataTable([
+          ['trend', 'Number of Tweets', { role: 'style' } ],
+          ['#StPatricksDay', 57, '#C0C0C0'],
+          ['#SundayMorning', 34, '#696969	'],
+          ['#SubToPewDiePie', 65, '#C0C0C0	'],
+          ['#EndGame', 115, '#696969'],
+          ['#OSsux', 81, '#C0C0C0'],
+          ['#Hashtag', 102, '#696969'],
+          ['#Pepperoni', 76, '#C0C0C0'],
+          ['#Pie', 21, '#696969'],
+          ['#CENproject', 37, '#C0C0C0'],
+          ['#4MoreYears', 96, '#696969']
+        ]);
+
+        // Set chart options
+        var options = {'title':'Number of tweets per Trending Topic in AREA',
+                       'width':1200,
+                       'height':900,
+                        'bar': {groupWidth: "100%"},
+                        'legend': { position: "none" }    
+                    };
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+    </script>
+  </head>
+
+  <body>
+    <!--Div that will hold the pie chart-->
+    <div id="chart_div"></div>
+  </body>
+</html>

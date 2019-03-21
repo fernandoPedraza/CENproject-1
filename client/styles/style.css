@@ -6,6 +6,7 @@ a img {
 }
 body {
 	margin:0;
+	
 }
 
 /*------------------------- Header ------------------------*/
@@ -89,7 +90,7 @@ body {
 }
 .home-content h1 {
 	text-align:center;
-	margin: 20px 0 40px 0;
+	margin: 20px 0 0 0;
 }
 .home-content h3 {
 	text-align:center;
@@ -101,5 +102,6 @@ body {
 	max-width:100%;
 }
 .home-content .container h3 {
+	padding:0;
 	text-align:center;
 }

@@ -1,14 +1,116 @@
+<<<<<<< HEAD
 body {
 	background-color:  black;
 }
 
+=======
+a { outline:none; }
+
+a img {
+	border:0;
+	display:block;
+}
+html {
+	height:100%;
+}
+html body {
+	margin:0;
+	background-color: #f7f7f7;
+	height:100%;
+}
+body h1, body h2, body h3, body h4, body h5, body h6 {
+	font-family: Anton, sans-serif;
+	margin:0;
+}
+
+/*------------------------- Header ------------------------*/
+.header {
+	width:100%;
+	height:60px;
+	background-color: #1da1f2;
+}
+.header-wrapper {
+	z-index:3;
+	position:fixed;
+	background-color:#1da1f2;
+	width:100%;
+	height:60px;
+	margin:0;
+}
+.header-container {
+	margin: 0 0 0 15px;
+	width:97%;
+	height:64px;
+}
+.header a#logo {
+	display:inline-block;
+	float:left;
+	margin: 6px 10px 0 0px;
+}
+.header ul.navigation {
+	display:inline-block;
+	float:left;
+	list-style:none;
+	margin:auto;
+}
+.header ul.nav-title {
+	padding:0;
+	float:left;
+	margin:auto;
+	margin-right:50px;
+	list-style:none;
+	font-size: 30px;
+}
+.header ul.nav-title a {
+	font-size:30px;
+	padding: 0 15px 0 15px;
+	letter-spacing: .02em;
+}
+.header ul.nav-logout {
+	float:right;
+	list-style:none;
+	margin:auto;
+}
+.header ul li {
+	float:left;
+}
+.header ul li.selected {
+	background-color:white;
+	height:60px;
+}
+.header ul li a {
+	color:black;
+	display:block;
+	font-family:"Palatino Linotype", "Book Antiqua", Palatino, serif;
+	font-size:17px;
+	height:60px;
+	letter-spacing:.075em;
+	line-height:62px;
+	padding:0 25px;
+	text-decoration:none;
+}
+.header ul.navigation li.selected div.dropdown a.sub-selected {
+	color:white;
+	background:#0024db;
+}
+
+.header ul li a:hover { color:white; }
+.header ul.nav-title li a:hover { color:black; }
+
+.header ul li.selected:hover a { color:black; }
+
+>>>>>>> 247edf64b6778cdc51a38e94f94b30b0cc3c2073
 /*------------------------- Home ------------------------*/
 .home-content {
 	width:100%;
 }
 .home-content h1 {
 	text-align:center;
+<<<<<<< HEAD
 	margin: 20px 0 40px 0;
+=======
+	margin: 20px 0 0 0;
+>>>>>>> 247edf64b6778cdc51a38e94f94b30b0cc3c2073
 }
 .home-content h3 {
 	text-align:center;
@@ -20,5 +122,49 @@ body {
 	max-width:100%;
 }
 .home-content .container h3 {
+<<<<<<< HEAD
 	text-align:center;
 }
+=======
+	padding:0;
+	text-align:center;
+}
+
+/*----------------------- Sign In ----------------------*/
+.header .login-title {
+	margin:0 auto;
+	width:300px;
+	height:100%
+}
+.header .login-title h1{
+	padding-top:5px;
+	height:100%
+}
+.signin-content {
+	height:100%;
+}
+.signin-content .login-box {
+	height:270px;
+	margin-right:20px;
+	padding:20px 20px 25px 20px;
+	border:2px solid #1d5dc4;
+	border-radius:10px;
+	box-shadow:0 0 6px inset #1da1f2;
+}
+.signin-content .login-box p {
+	margin-bottom:30px;
+}
+.signin-content .login-box .col-sm input {
+	margin-bottom:25px;
+	width:100%;
+}
+.signin-content h4 {
+	font-weight:bold;
+	text-align:center;
+	margin-bottom:15px;
+}
+.signin-content .signin-button {
+	width:40%;
+	height:40px;
+}
+>>>>>>> 247edf64b6778cdc51a38e94f94b30b0cc3c2073

@@ -1,4 +1,3 @@
-
 /* Dependencies */
 var mongoose = require('mongoose'),
     User = require('../models/user.server.model.js'),
@@ -16,9 +15,10 @@ exports.createUser = function(req, res) {
       user.password = hash;
       user.save(function(err) {
         if(err) {
-          res.json({ success: false, msg: 'Failed to register user' });
+          console.log(err)
+          return res.json({ success: false, msg: err.errmsg });
         } else {
-          res.json({ success: true, msg: 'User registered' });
+          return res.json({ success: true, msg: 'User registered' });
         }
       });
     });
@@ -27,12 +27,13 @@ exports.createUser = function(req, res) {
 
 exports.login = function(req, res) {
   var userRequested = new User(req.body);
+  console.log(req.session);
 
   User.find({ username: userRequested.username }, function(err, userFound) {
     if (err) {
       return res.json({ success: false, msg: 'MongoDB find user error' });
     }
-    if (!userFound) {
+    if (userFound.length == 0) {
       return res.json({ success: false, msg: 'User not found' });
     }
     userFound = userFound[0];
@@ -42,7 +43,7 @@ exports.login = function(req, res) {
         const token = jwt.sign({data: userFound}, config.secret, {
           expiresIn: 604000
         });
-        res.json({
+        return res.json({
           success: true,
           token: 'JWT ' +token,
           user: {

@@ -1,5 +1,13 @@
 <!DOCTYPE html>
 <html>
+  <style media="screen">
+    .alert {
+      color: red;
+    }
+    .individual-alert{
+      display: inline;
+    }
+  </style>
   <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="styles/main.css">
@@ -7,11 +15,14 @@
   <body ng-app="usersApp">
     <div class="container">
       <div class="row" ng-controller="UsersController">
+          <div class="alert" ng-if="flashMessage">
+              {{flashMessage}}
+          </div>
           <form novalidate class="simple-form">
             <h2>Register</h2>
-            Username: <input type="text" ng-model="newUser.username" /><br />
-            Email: <input type="text" ng-model="newUser.email" /><br />
-            Password: <input type="text" ng-model="newUser.password" /><br />
+            Username: <input type="text" ng-model="newUser.username" /><p class="individual-alert alert" ng-if="noUsername">{{noUsername}}</p><br/>
+            Email: <input type="text" ng-model="newUser.email" /><p class="individual-alert alert" ng-if="noEmail">{{noEmail}}</p><br/>
+            Password: <input type="text" ng-model="newUser.password" /><p class="individual-alert alert" ng-if="noPassword">{{noPassword}}</p><br/>
             <button class="btn btn-primary" ng-click="registerUser()">Register</button>
           </form>
         </div>

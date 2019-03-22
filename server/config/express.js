@@ -2,6 +2,7 @@ var path = require('path'),
     express = require('express'),
     mongoose = require('mongoose'),
     morgan = require('morgan'),
+    cors = require('cors'),
     bodyParser = require('body-parser'),
     config = require('./config'),
     listingsRouter = require('../routes/listings.server.routes'),
@@ -15,11 +16,7 @@ module.exports.init = function() {
     var app = express();
 
     // enable CORS
-    app.use(function(req, res, next) {
-      res.header('Access-Control-Allow-Origin', '*');
-      res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-      next();
-    })
+    app.use(cors());
 
     //enable request logging for development debugging
     app.use(morgan('dev'));

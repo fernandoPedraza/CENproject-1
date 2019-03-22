@@ -1,5 +1,13 @@
 <!DOCTYPE html>
 <html>
+  <style>
+    .alert {
+      color: red;
+    }
+    .individual-alert {
+      display: inline;
+    }
+  </style>
   <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="styles/main.css">
@@ -7,10 +15,13 @@
   <body ng-app="usersApp">
     <div class="container">
       <div class="row" ng-controller="UsersController">
+          <div class="alert" ng-if="flashMessage">
+              {{flashMessage}}
+          </div>
           <form novalidate class="simple-form">
             <h2>Login</h2>
-            Username: <input type="text" ng-model="user.username" /><br />
-            Password: <input type="text" ng-model="user.password" /><br />
+            Username: <input type="text" ng-model="user.username"/><p class="individual-alert alert" ng-if="noUsername">{{noUsername}}</p><br/>
+            Password: <input type="text" ng-model="user.password"/><p class="individual-alert alert" ng-if="noPassword">{{noPassword}}</p><br/>
             <button class="btn btn-primary" ng-click="loginUser()">Login</button>
           </form>
         </div>

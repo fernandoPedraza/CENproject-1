@@ -39,10 +39,11 @@
         ]);
         // Set chart options
         var options = {'title':'Top 20 Most Popular Hashtags',
-                       'width':1200,
-                       'height':350,
-                        'bar': {groupWidth: "100%"},
-                        'legend': { position: "none" }    
+                      'width':1200,
+                      'height':350,
+                      'bar': {groupWidth: "100%"},
+                      'legend': { position: "none" },
+											'backgroundColor':'#f7f7f7'
                     };
         // Instantiate and draw our chart, passing in some options.
         var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
@@ -64,11 +65,11 @@
 						<li class="selected">
 							<a href="index.html">Home</a>
 						</li>
-						<li> <a href="gallery.html">Trends by Topic</a></li>
-						<li> <a href="contact.html">Trends by Location</a></li>
+						<li> <a href="search-topic.html">Trends by Topic</a></li>
+						<li> <a href="seach-location.html">Trends by Location</a></li>
 					</ul>
 					<ul class="nav-logout">
-						<li> <a href="login.html">Log out</a></li>
+						<li> <a href="signin.html">Log out</a></li>
 					</ul>
 				</div>
 			</div>

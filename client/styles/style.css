@@ -4,15 +4,24 @@ a img {
 	border:0;
 	display:block;
 }
-body {
+html {
+	height:100%;
+}
+html body {
 	margin:0;
-	
+	background-color: #f7f7f7;
+	height:100%;
+}
+body h1, body h2, body h3, body h4, body h5, body h6 {
+	font-family: Anton, sans-serif;
+	margin:0;
 }
 
 /*------------------------- Header ------------------------*/
 .header {
 	width:100%;
 	height:60px;
+	background-color: #1da1f2;
 }
 .header-wrapper {
 	z-index:3;
@@ -104,4 +113,42 @@ body {
 .home-content .container h3 {
 	padding:0;
 	text-align:center;
+}
+
+/*----------------------- Sign In ----------------------*/
+.header .login-title {
+	margin:0 auto;
+	width:300px;
+	height:100%
+}
+.header .login-title h1{
+	padding-top:5px;
+	height:100%
+}
+.signin-content {
+	height:100%;
+}
+.signin-content .login-box {
+	height:270px;
+	margin-right:20px;
+	padding:20px 20px 25px 20px;
+	border:2px solid #1d5dc4;
+	border-radius:10px;
+	box-shadow:0 0 6px inset #1da1f2;
+}
+.signin-content .login-box p {
+	margin-bottom:30px;
+}
+.signin-content .login-box .col-sm input {
+	margin-bottom:25px;
+	width:100%;
+}
+.signin-content h4 {
+	font-weight:bold;
+	text-align:center;
+	margin-bottom:15px;
+}
+.signin-content .signin-button {
+	width:40%;
+	height:40px;
 }

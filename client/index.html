@@ -1,10 +1,6 @@
 <!DOCTYPE html>
 <html>
-<style media="screen">
-  .isBlack {
-    color: black;
-  }
-</style>
+
   <head>
 		<link href="styles/style.css" rel="stylesheet" type="text/css"/>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -51,35 +47,25 @@
                     <a ng-class="{isBlack: $index % 2 == 1}" href="#">{{topic.name}}</a>
                   </div>
                 </div>
-
-                </div>
+              </div>
     					<div class="col-md-6 px-1">
     						<h3>Tweets</h3>
                 <div class="row">
-                  <div class="col-12 pt-2" ng-repeat="tweet in topTweets">
-                    <div class="row">
-                      <div class="col-6">
-                        <div class="row">
-                          {{tweet.user.name}}
-                          <img ng-src="{{tweet.user.profile_image_url}}" alt="profile image">
-                        </div>
-                      </div>
-                      <div class="col-6">
-                        {{tweet.full_text}}
-                      </div>
+                  <div class="col-6" ng-repeat="tweet in topTweets">
+                    <div ng-bind-html="tweet">
+                      <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
                     </div>
                   </div>
                 </div>
     					</div>
   					</div>
-
   			</div>
   		</div>
-    </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="https://code.angularjs.org/1.4.3/angular.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular-sanitize.js"></script>
     <script src="js/app.js"></script>
     <script src="js/factories/dataFactory.js"></script>
     <script src="js/controllers/dataController.js"></script>

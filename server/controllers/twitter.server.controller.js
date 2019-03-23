@@ -30,8 +30,17 @@ exports.getGlobalTopics = function(req, res) {
 }
 
 exports.getTopTweets = function(req, res) {
-  T.get('search/tweets', { q: '?', count: 50, result_type: 'popular', tweet_mode: 'extended' }, function(err, data, response) {
+  T.get('search/tweets', { q: '?', count: 50, result_type: 'popular', /*tweet_mode: 'extended'*/ }, function(err, data, response) {
     if (err) return res.json({ success: false, msg: 'Failed to get tweets: ' +err });
     return res.json({ success: true, tweets: data.statuses });
   })
+}
+
+exports.getEmbeddedTweet = function(req, res) {
+  var url = req.body.url;
+  T.get('statuses/oembed', { url: url, hide_media: 1 }, function(err, data, response) {
+    if (err) return res.json({ success: false, msg: 'Unable to get embedded tweet: ' +err });
+    console.log(data);
+    return res.json({ success: true, embedded_tweet: data });
+  });
 }

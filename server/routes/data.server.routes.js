@@ -9,4 +9,7 @@ router.route('/global_topics')
 router.route('/top_tweets')
   .get(data.getTopTweets);
 
+router.route('/embedded_tweet')
+  .post(data.getEmbeddedTweet);
+
 module.exports = router;

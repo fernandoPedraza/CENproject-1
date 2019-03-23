@@ -29,9 +29,16 @@ angular.module('data').controller('DataController', ['$scope', '$window', 'Data'
       chart.draw(data, options);
     });
 
+    $scope.topTweets = []
     Data.getTopTweets().then(function(response) {
-      $scope.topTweets = response.data.tweets;
-      console.log($scope.topTweets);
+      for (var i = 0; i < response.data.tweets.length; i++) {
+        var screen_name = response.data.tweets[i].user.screen_name;
+        var id = response.data.tweets[i].id_str;
+        var url = { url: 'https://twitter.com/' + screen_name + '/status/' + id };
+        Data.getEmbeddedTweet(url).then(function(response) {
+          $scope.topTweets.push(response.data.embedded_tweet.html)
+        });
+      }
     });
 
   }

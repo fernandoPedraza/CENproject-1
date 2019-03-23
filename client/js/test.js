@@ -1,6 +1,5 @@
 var Twit = require('twit');
 var https = require('https');
-
 var T = new Twit({
   consumer_key: '9YhW80yHKvyIUvl176eYb3cTM',
   consumer_secret: 'cmdLjUGrKe7fpl4zF7OOofjEOFBhJW1zl32N7TARZLf4KHp5wc',
@@ -38,12 +37,12 @@ T.get('trends/available', {}, function(err, data, response) {
 // trending tweets globally 
 // trending tweets based on a topic
 // https://developer.twitter.com/en/docs/tweets/search/api-reference/get-search-tweets
-/*
-T.get('search/tweets', { q: '+', count: 100, result_type: 'popular' }, function(err, data, response) {
-  console.log(data)
-    console.log(err)
+
+T.get('search/tweets', { q: '?', count: 100 }, function(err, data, response) {
+    data = data.statuses;
+    console.log(data.length);
 })
-*/
+
 
 // get User by username
 // https://developer.twitter.com/en/docs/accounts-and-users/follow-search-get-users/api-reference/get-users-show

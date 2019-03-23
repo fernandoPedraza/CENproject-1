@@ -27,7 +27,6 @@ exports.createUser = function(req, res) {
 
 exports.login = function(req, res) {
   var userRequested = new User(req.body);
-  console.log(req.session);
 
   User.find({ username: userRequested.username }, function(err, userFound) {
     if (err) {

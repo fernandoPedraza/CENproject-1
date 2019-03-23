@@ -5,8 +5,8 @@ var path = require('path'),
     cors = require('cors'),
     bodyParser = require('body-parser'),
     config = require('./config'),
-    listingsRouter = require('../routes/listings.server.routes'),
-    registerUserRouter = require('../routes/users.server.routes');
+    userAuthRouter = require('../routes/users.server.routes'),
+    dataRouter = require('../routes/data.server.routes');
 
 module.exports.init = function() {
     //connect to database
@@ -24,26 +24,23 @@ module.exports.init = function() {
     //body parsing middleware
     app.use(bodyParser.json());
 
-
-    /**TODO
-    Serve static files */
+    /* Serve static files */
     app.use(express.static(path.join(__dirname, '../../client')));
 
-
-    /**TODO
-    Use the listings router for requests to the api */
-    app.use('/api/listings', listingsRouter);
-
-    /* Use the login user router when directed to the /login page */
-    // app.use('/login', loginUserRouter);
+    /* Use the userAuth router when directed to the /login page */
+    app.use('/login', userAuthRouter);
     app.get('/login', function(req, res) {
         res.sendFile(path.join(__dirname, '../../client/login.html'));
     });
-    /* Use the register user router when directed to the /register page */
-    app.use('/', registerUserRouter);
+
+    /* Use the userAuth router when directed to the /register page */
+    app.use('/register', userAuthRouter);
     app.get('/register', function(req, res) {
         res.sendFile(path.join(__dirname, '../../client/registerUser.html'));
     });
+
+    /* Use the data router for requests to the API */
+    app.use('/api', dataRouter);
 
     /*Go to homepage for all routes not specified */
     app.get('*', function(req, res) {

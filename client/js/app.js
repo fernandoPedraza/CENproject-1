@@ -7,3 +7,6 @@ var app = angular.module('directoryApp', ['listings']);
 
 angular.module('users', []);
 var app2 = angular.module('usersApp', ['users']);
+
+angular.module('data', [])
+var app3 = angular.module('tweetApp', ['data']);

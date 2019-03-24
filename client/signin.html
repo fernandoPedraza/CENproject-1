@@ -5,22 +5,47 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   </head>
   
-	<body>
+	<body style="background-image:url(images/biglogo.png);">
 	
 		<div class="header">
 			<div class="login-title">
-				<a href="home.html" id="logo"><img src="images/logo.png" alt="logo"></a>
+				<a id="logo"><img src="images/blacklogo-sm.png" alt="logo"/></a>
 				<h1>TweetApp</h1>
 			</div>
 		</div>
 		
 		<div class="signin-content">
-			<div class="row" style="margin-top:100px;">
-				<div class="col-sm">
+			<div class="row">
+				<div class="col-7">
+					<div class="signup-box">
+						<form action="/action_page.php">
+							<div class="row">
+								<div class="col">
+									<h4>CREATE A NEW ACCOUNT</h4>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col">
+									<p>Username<span style="color:red;">*</span></p>
+									<input type="text" name="Username">
+									<p>Password<span style="color:red;">*</span></p>
+									<input type="password" name="Password">
+									<p>Confirm Password<span style="color:red;">*</span></p>
+									<input type="password" name="Confirm-Password">
+									<p>Email<span style="color:red;">*</span></p>
+									<input type="text" name="Email">
+									<p>Confirm Email<span style="color:red;">*</span></p>
+									<input type="text" name="Confirm-Email">
+								</div>
+							</div>
+						</form>
+						
+						<form style="text-align:center;" action="html5.html">
+								<input class="signup-button" type="submit" value="CREATE ACCOUNT" />
+						</form>
+					</div>
 				</div>
-				<div class="col-sm">
-				</div>
-				<div class="col-sm">
+				<div class="col-4">
 					<div class="login-box">
 						<form action="/action_page.php">
 							<div class="row">
@@ -35,13 +60,13 @@
 								</div>
 								<div class="col-sm">
 									<input type="text" name="Username">
-									<input type="text" name="Password">
+									<input type="password" name="Password">
 								</div>
 							</div>
 						</form>
 						
 						<form style="text-align:center;" action="html5.html">
-								<input class="signin-button" type="submit" value="Sign in" />
+								<input class="signin-button" type="submit" value="LOGIN" />
 						</form>
 						<div style="text-align:center;">
 							<a style="font-size:13px;" href="forgot-pass.html">Forgot password?</a>

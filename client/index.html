@@ -1,59 +1,15 @@
 <!DOCTYPE html>
 <html>
+
   <head>
 		<link href="styles/style.css" rel="stylesheet" type="text/css"/>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-      <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-      // Load the Visualization API and the corechart package.
-      google.charts.load('current', {'packages':['corechart']});
-      // Set a callback to run when the Google Visualization API is loaded.
-      google.charts.setOnLoadCallback(drawChart);
-      // Callback that creates and populates a data table,
-      // instantiates the pie chart, passes in the data and
-      // draws it.
-      function drawChart() {
-        // Create the data table.
-        var data = google.visualization.arrayToDataTable([
-          ['trend', 'Number of Tweets', { role: 'style' } ],
-          ['#StPatricksDay', 57, '#C0C0C0'],
-          ['#SundayMorning', 34, '#696969	'],
-          ['#SubToPewDiePie', 65, '#C0C0C0	'],
-          ['#EndGame', 115, '#696969'],
-          ['#OSsux', 81, '#C0C0C0'],
-          ['#Hashtag', 102, '#696969'],
-          ['#Pepperoni', 76, '#C0C0C0'],
-          ['#Pie', 21, '#696969'],
-          ['#CENproject', 37, '#C0C0C0'],
-					['#4MoreYears', 96, '#696969'],
-          ['#StPatricksDay', 57, '#C0C0C0'],
-          ['#SundayMorning', 34, '#696969	'],
-          ['#SubToPewDiePie', 65, '#C0C0C0	'],
-          ['#EndGame', 115, '#696969'],
-          ['#OSsux', 81, '#C0C0C0'],
-          ['#Hashtag', 102, '#696969'],
-          ['#Pepperoni', 76, '#C0C0C0'],
-          ['#Pie', 21, '#696969'],
-          ['#CENproject', 37, '#C0C0C0'],
-          ['#4MoreYears', 96, '#696969']
-        ]);
-        // Set chart options
-        var options = {'title':'Top 20 Most Popular Hashtags',
-                      'width':1200,
-                      'height':350,
-                      'bar': {groupWidth: "100%"},
-                      'legend': { position: "none" },
-											'backgroundColor':'#f7f7f7'
-                    };
-        // Instantiate and draw our chart, passing in some options.
-        var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
-        chart.draw(data, options);
-      }
-    </script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
 	</head>
-  
-  <body ng-app="tweetApp">
-	
+
+  <body >
+
 		<div class="header">
 			<div class="header-wrapper">
 				<div class="header-container">
@@ -74,211 +30,44 @@
 				</div>
 			</div>
 		</div>
-		
-		<div class="home-content">
-			<h1>WHAT IN THE WORLD IS TRENDING?</h1>
-			<div class="container">
-				<div id="chart_div"></div>
-				<div class="row">
-					<div class="col-sm">
-						<h3>Top 50 Topics</h3>
-						<div class="row">
-							<div class="col-sm">
-								<table class="table">
-										<div class="col-sm">
-											<tr>
-												<td><a href="index.html">topic1</a></td>
-											</tr>
-											<tr>
-												<td><a href="index.html">topic6</a></td>
-											</tr>
-											<tr>
-												<td><a href="index.html">topic11</a></td>
-											</tr>
-											<tr>
-												<td><a href="index.html">topic16</a></td>
-											</tr>
-											<tr>
-												<td><a href="index.html">topic21</a></td>
-											</tr>
-											<tr>
-												<td><a href="index.html">topic26</a></td>
-											</tr>
-											<tr>
-												<td><a href="index.html">topic31</a></td>
-											</tr>
-											<tr>
-												<td><a href="index.html">topic36</a></td>
-											</tr>
-											<tr>
-												<td><a href="index.html">topic41</a></td>
-											</tr>
-											<tr>
-												<td><a href="index.html">topic46</a></td>
-											</tr>
-										</div>
-									</tbody>
-								</table>
-							</div>
-							<div class="col-sm">
-								<table class="table">
-										<div class="col-sm">
-											<tr>
-												<td><a href="index.html">topic2</a></td>
-											</tr>
-											<tr>
-												<td><a href="index.html">topic7</a></td>
-											</tr>
-											<tr>
-												<td><a href="index.html">topic12</a></td>
-											</tr>
-											<tr>
-												<td><a href="index.html">topic17</a></td>
-											</tr>
-											<tr>
-												<td><a href="index.html">topic22</a></td>
-											</tr>
-											<tr>
-												<td><a href="index.html">topic27</a></td>
-											</tr>
-											<tr>
-												<td><a href="index.html">topic32</a></td>
-											</tr>
-											<tr>
-												<td><a href="index.html">topic37</a></td>
-											</tr>
-											<tr>
-												<td><a href="index.html">topic42</a></td>
-											</tr>
-											<tr>
-												<td><a href="index.html">topic47</a></td>
-											</tr>
-										</div>
-									</tbody>
-								</table>
-							</div>
-							<div class="col-sm">
-								<table class="table">
-										<div class="col-sm">
-											<tr>
-												<td><a href="index.html">topic3</a></td>
-											</tr>
-											<tr>
-												<td><a href="index.html">topic8</a></td>
-											</tr>
-											<tr>
-												<td><a href="index.html">topic13</a></td>
-											</tr>
-											<tr>
-												<td><a href="index.html">topic18</a></td>
-											</tr>
-											<tr>
-												<td><a href="index.html">topic23</a></td>
-											</tr>
-											<tr>
-												<td><a href="index.html">topic28</a></td>
-											</tr>
-											<tr>
-												<td><a href="index.html">topic33</a></td>
-											</tr>
-											<tr>
-												<td><a href="index.html">topic38</a></td>
-											</tr>
-											<tr>
-												<td><a href="index.html">topic43</a></td>
-											</tr>
-											<tr>
-												<td><a href="index.html">topic48</a></td>
-											</tr>
-										</div>
-									</tbody>
-								</table>
-							</div>
-							<div class="col-sm">
-								<table class="table">
-										<div class="col-sm">
-											<tr>
-												<td><a href="index.html">topic4</a></td>
-											</tr>
-											<tr>
-												<td><a href="index.html">topic9</a></td>
-											</tr>
-											<tr>
-												<td><a href="index.html">topic14</a></td>
-											</tr>
-											<tr>
-												<td><a href="index.html">topic19</a></td>
-											</tr>
-											<tr>
-												<td><a href="index.html">topic24</a></td>
-											</tr>
-											<tr>
-												<td><a href="index.html">topic29</a></td>
-											</tr>
-											<tr>
-												<td><a href="index.html">topic34</a></td>
-											</tr>
-											<tr>
-												<td><a href="index.html">topic39</a></td>
-											</tr>
-											<tr>
-												<td><a href="index.html">topic44</a></td>
-											</tr>
-											<tr>
-												<td><a href="index.html">topic49</a></td>
-											</tr>
-										</div>
-									</tbody>
-								</table>
-							</div>
-							<div class="col-sm">
-								<table class="table">
-										<div class="col-sm">
-											<tr>
-												<td><a href="index.html">topic5</a></td>
-											</tr>
-											<tr>
-												<td><a href="index.html">topic10</a></td>
-											</tr>
-											<tr>
-												<td><a href="index.html">topic15</a></td>
-											</tr>
-											<tr>
-												<td><a href="index.html">topic20</a></td>
-											</tr>
-											<tr>
-												<td><a href="index.html">topic25</a></td>
-											</tr>
-											<tr>
-												<td><a href="index.html">topic30</a></td>
-											</tr>
-											<tr>
-												<td><a href="index.html">topic35</a></td>
-											</tr>
-											<tr>
-												<td><a href="index.html">topic40</a></td>
-											</tr>
-											<tr>
-												<td><a href="index.html">topic45</a></td>
-											</tr>
-											<tr>
-												<td><a href="index.html">topic50</a></td>
-											</tr>
-										</div>
-									</tbody>
-								</table>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm">
-						<h3>Tweets</h3>
-					</div>
-				</div>
-			</div>
-		</div>
-		
+
+    <div class="container-fluid" ng-controller="DataController">
+
+  		<div class="home-content">
+  			<h1>WHAT IN THE WORLD IS TRENDING?</h1>
+
+  				<div class="mx-auto" id="chart_div"></div>
+
+
+    				<div class="row">
+    					<div class="col-md-6 px-1">
+    						<h3>Top 50 Topics</h3>
+                <div class="row">
+                  <div class="col-lg-4 col-md-6 text-center" ng-repeat="topic in top50topics">
+                    <a ng-class="{isBlack: $index % 2 == 1}" href="#">{{topic.name}}</a>
+                  </div>
+                </div>
+              </div>
+    					<div class="col-md-6 px-1">
+    						<h3>Tweets</h3>
+                <div class="row">
+                  <div class="col-xl-4 px-2 justify-content-center" ng-repeat="tweet in topTweets">
+                    <div ng-bind-html="tweet" class="">
+                      <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+                    </div>
+                  </div>
+                </div>
+    					</div>
+  					</div>
+  			</div>
+  		</div>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="https://code.angularjs.org/1.4.3/angular.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular-sanitize.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/factories/dataFactory.js"></script>
+    <script src="js/controllers/dataController.js"></script>
   </body>
 </html>

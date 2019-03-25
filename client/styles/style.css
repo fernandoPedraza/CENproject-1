@@ -1,3 +1,9 @@
+<<<<<<< HEAD
+body {
+	background-color:  black;
+}
+
+=======
 a { outline:none; }
 
 a img {
@@ -94,13 +100,18 @@ body h1, body h2, body h3, body h4, body h5, body h6 {
 
 .header ul li.selected:hover a { color:black; }
 
+>>>>>>> 247edf64b6778cdc51a38e94f94b30b0cc3c2073
 /*------------------------- Home ------------------------*/
 .home-content {
 	width:100%;
 }
 .home-content h1 {
 	text-align:center;
+<<<<<<< HEAD
+	margin: 20px 0 40px 0;
+=======
 	margin: 20px 0 0 0;
+>>>>>>> 247edf64b6778cdc51a38e94f94b30b0cc3c2073
 }
 .home-content h3 {
 	text-align:center;
@@ -112,6 +123,10 @@ body h1, body h2, body h3, body h4, body h5, body h6 {
 	max-width:100%;
 }
 .home-content .container h3 {
+<<<<<<< HEAD
+	text-align:center;
+}
+=======
 	padding:0;
 	text-align:center;
 }
@@ -180,3 +195,4 @@ body h1, body h2, body h3, body h4, body h5, body h6 {
 	width:40%;
 	height:40px;
 }
+>>>>>>> 247edf64b6778cdc51a38e94f94b30b0cc3c2073

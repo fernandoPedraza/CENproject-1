@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <style media="screen">
+    .alert {
+      color: red;
+    }
+    .individual-alert{
+      display: inline;
+    }
+  </style>
+  <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/main.css">
+  </head>
+  <body ng-app="usersApp">
+    <div class="container">
+      <div class="row" ng-controller="UsersController">
+          <div class="alert" ng-if="flashMessage">
+              {{flashMessage}}
+          </div>
+          <form novalidate class="simple-form">
+            <h2>Register</h2>
+            Username: <input type="text" ng-model="newUser.username" /><p class="individual-alert alert" ng-if="noUsername">{{noUsername}}</p><br/>
+            Email: <input type="text" ng-model="newUser.email" /><p class="individual-alert alert" ng-if="noEmail">{{noEmail}}</p><br/>
+            Password: <input type="text" ng-model="newUser.password" /><p class="individual-alert alert" ng-if="noPassword">{{noPassword}}</p><br/>
+            <button class="btn btn-primary" ng-click="registerUser()">Register</button>
+          </form>
+        </div>
+      </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+    <script src="https://code.angularjs.org/1.4.3/angular.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/factories/usersFactory.js"></script>
+    <script src="js/controllers/usersController.js"></script>
+  </body>
+</html>

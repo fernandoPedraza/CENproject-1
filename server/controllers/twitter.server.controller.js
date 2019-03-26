@@ -38,7 +38,7 @@ exports.getTopTweets = function(req, res) {
 
 exports.getEmbeddedTweet = function(req, res) {
   var url = req.body.url;
-  T.get('statuses/oembed', { url: url, hide_media: 1 }, function(err, data, response) {
+  T.get('statuses/oembed', { url: url, hide_media: true, hide_thread: true, aligin: "center" }, function(err, data, response) {
     if (err) return res.json({ success: false, msg: 'Unable to get embedded tweet: ' +err });
     console.log(data);
     return res.json({ success: true, embedded_tweet: data });

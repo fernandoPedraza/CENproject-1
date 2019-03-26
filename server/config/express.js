@@ -1,9 +1,13 @@
 var path = require('path'),
     express = require('express'),
+    expressValidator = require('express-validator'),
     mongoose = require('mongoose'),
     morgan = require('morgan'),
     cors = require('cors'),
+    passport = require('passport'),
+    session = require('express-session'),
     bodyParser = require('body-parser'),
+    cookieParser = require('cookie-parser'),
     config = require('./config'),
     userAuthRouter = require('../routes/users.server.routes'),
     dataRouter = require('../routes/data.server.routes');
@@ -15,6 +19,9 @@ module.exports.init = function() {
     //initialize app
     var app = express();
 
+    app.use(passport.initialize());
+    app.use(passport.session());
+
     // enable CORS
     app.use(cors());
 
@@ -23,6 +30,16 @@ module.exports.init = function() {
 
     //body parsing middleware
     app.use(bodyParser.json());
+    //app.use(expressValidator());
+
+    //app.use(cookieParser());
+    //// Managing sessions
+    //app.use(session({
+    //  secret: 'keyboard cat',
+    //  resave: false,
+    //  saveUninitialized: false,
+//
+    //}))
 
     /* Serve static files */
     app.use(express.static(path.join(__dirname, '../../client')));

@@ -4,17 +4,20 @@ a img {
 	border:0;
 	display:block;
 }
-html {
-	height:100%;
-}
 html body {
 	margin:0;
-	background-color: #f7f7f7;
+	background-color: #ffffff;
 	height:100%;
 }
 body h1, body h2, body h3, body h4, body h5, body h6 {
 	font-family: Anton, sans-serif;
 	margin:0;
+}
+article[data-scribe] {
+	display:none;
+}
+.home-content .MediaCard, body .MediaCard--mediaForward, body .cards-multimedia, body .customisable-border {
+	display:none;
 }
 
 /*------------------------- Header ------------------------*/
@@ -22,6 +25,7 @@ body h1, body h2, body h3, body h4, body h5, body h6 {
 	width:100%;
 	height:60px;
 	background-color: #1da1f2;
+	border-bottom: black solid .5px;
 }
 .header-wrapper {
 	z-index:3;
@@ -30,11 +34,13 @@ body h1, body h2, body h3, body h4, body h5, body h6 {
 	width:100%;
 	height:60px;
 	margin:0;
+	border-bottom:black solid .5px;
 }
 .header-container {
 	margin: 0 0 0 15px;
 	width:97%;
 	height:64px;
+	overflow:hidden;
 }
 .header a#logo {
 	display:inline-block;
@@ -42,10 +48,10 @@ body h1, body h2, body h3, body h4, body h5, body h6 {
 	margin: 6px 10px 0 0px;
 }
 .header ul.navigation {
-	display:inline-block;
+	margin-left:50px;
 	float:left;
 	list-style:none;
-	margin:auto;
+	overflow:hidden;
 }
 .header ul.nav-title {
 	padding:0;
@@ -114,6 +120,23 @@ body h1, body h2, body h3, body h4, body h5, body h6 {
 	padding:0;
 	text-align:center;
 }
+.home-content .isBlack {
+	color:black;
+}
+.home-content .col-md-7 {
+	border-left: gray solid .5px;
+}
+.home-content .text-center {
+	height:46px;
+	word-wrap:break-word;
+	padding:0;
+}
+/*---------------------- Search by Topic ------------------------*/
+.searchbar-container {
+	margin:auto;
+	margin-top: 20px;
+	width:30%;
+}
 
 /*----------------------- Sign In ----------------------*/
 .header .login-title {
@@ -122,6 +145,7 @@ body h1, body h2, body h3, body h4, body h5, body h6 {
 	height:100%
 }
 .header .login-title h1{
+	font-family:"Palatino Linotype", "Book Antiqua", Palatino, serif;
 	padding-top:5px;
 	height:100%
 }
@@ -130,17 +154,37 @@ body h1, body h2, body h3, body h4, body h5, body h6 {
 }
 .signin-content .login-box {
 	height:270px;
-	margin-right:20px;
+	margin:100px 20px 0 0;
 	padding:20px 20px 25px 20px;
 	border:2px solid #1d5dc4;
-	border-radius:10px;
-	box-shadow:0 0 6px inset #1da1f2;
+	border-radius:8px;
+	box-shadow:0 0 3px inset #1da1f2;
+	background-color: #f7f7f7;
+}
+.signin-content .col-7 {
+	margin:15px 55px 0 35px;
+	padding:0;
+	border-right: black solid .5px;
+}
+.signin-content .signup-box {
+	background-color:#c6e4ffba;
+	width:80%;
+	padding:22px 20px 20px 20px;
+	margin:20px auto 15px auto;
 }
 .signin-content .login-box p {
 	margin-bottom:30px;
 }
+.signin-content .signup-box p {
+	margin:0;
+}
 .signin-content .login-box .col-sm input {
+	background-color:#55adee54;
 	margin-bottom:25px;
+	width:100%;
+}
+.signin-content .signup-box .col input {
+	margin-bottom:16px;
 	width:100%;
 }
 .signin-content h4 {
@@ -148,7 +192,7 @@ body h1, body h2, body h3, body h4, body h5, body h6 {
 	text-align:center;
 	margin-bottom:15px;
 }
-.signin-content .signin-button {
+.signin-content .signin-button, .signup-button {
 	width:40%;
 	height:40px;
 }

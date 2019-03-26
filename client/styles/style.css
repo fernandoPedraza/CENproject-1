@@ -3,6 +3,11 @@ body {
 	background-color:  black;
 }
 
+.individual-alert {
+	float: left;
+	color: red;
+}
+
 =======
 a { outline:none; }
 

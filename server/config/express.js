@@ -8,9 +8,11 @@ var path = require('path'),
     session = require('express-session'),
     bodyParser = require('body-parser'),
     cookieParser = require('cookie-parser'),
+    jwt = require('express-jwt'),
     config = require('./config'),
     userAuthRouter = require('../routes/userAuth.server.routes'),
     dataRouter = require('../routes/data.server.routes');
+
 
 module.exports.init = function() {
     //connect to database
@@ -30,6 +32,10 @@ module.exports.init = function() {
 
     // Serve static files
     app.use(express.static(path.join(__dirname, '../../client')));
+
+    // init passport
+    require('./passport')
+    app.use(passport.initialize());
 
     // Assign routers
     app.use('/api', dataRouter);

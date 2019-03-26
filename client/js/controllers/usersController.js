@@ -12,7 +12,6 @@ angular.module('users').controller('UsersController', ['$scope', '$window', 'Use
     $scope.noEmailMatch = undefined;
 
     $scope.registerUser = function() {
-      console.log('register');
       /**TODO
       *Save the article using the Listings factory. If the object is successfully
       saved redirect back to the list page. Otherwise, display the error
@@ -93,8 +92,10 @@ angular.module('users').controller('UsersController', ['$scope', '$window', 'Use
       };
 
         Users.registerUser(obj).then(function(response) {
+          console.log(response);
           if (response.data.success) {
             $window.location.href = "/";
+            $window.localStorage.setItem('token', response.data.token);
           } else {
             var errmsg = response.data.msg;
             if (errmsg.includes("$username")) {
@@ -141,15 +142,13 @@ angular.module('users').controller('UsersController', ['$scope', '$window', 'Use
       Users.loginUser(obj).then(function(response) {
         if (response.data.success) {
           $window.location.href = "/";
-          $window.token.jwt = response.data.token;
+          $window.localStorage.setItem('token', response.data.token);
         } else {
           $scope.flashMessage = "Login Failed: " + response.data.msg;
         }
-        console.log(response)
       }, function(error) {
           console.log('Unable to login:', error);
       });
     };
-
   }
 ]);

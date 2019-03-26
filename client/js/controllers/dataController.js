@@ -7,7 +7,9 @@ google.charts.setOnLoadCallback(function() {
 
 angular.module('data').controller('DataController', ['$scope', '$window', 'Data',
   function($scope, $window, Data) {
-
+    if (!$window.localStorage.getItem('token')) {
+      $window.location.href = '/users';
+    }
     Data.getGlobalTopics().then(function(response) {
       $scope.top50topics = response.data.trending_topics;
       // Create the data table.
@@ -40,6 +42,11 @@ angular.module('data').controller('DataController', ['$scope', '$window', 'Data'
         });
       }
     });
+
+    $scope.logout = function() {
+      $window.location.href = "/users"
+      $window.localStorage.clear();
+    };
 
   }
 ]);

@@ -9,9 +9,6 @@ angular.module('data', []).factory('Data', function($http) {
     getEmbeddedTweet: function(url) {
       return $http.post('http://localhost:8080/api/embedded_tweet', url);
     },
-    getTweetsByTopic: function(topic) {
-      return $http.post('http://localhost:8080/api/tweets_by_topic', topic);
-    },
   };
 
   return methods;

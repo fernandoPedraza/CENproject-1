@@ -50,26 +50,10 @@ angular.module('data').controller('DataController', ['$scope', '$window', 'Data'
       $window.localStorage.clear();
     };
 
-    $scope.tweetsByTopic = []
-    if ($window.localStorage.getItem('topicIndex')) {
-      var index = $window.localStorage.getItem('topicIndex');
-      Data.getTweetsByTopic($scope.top50topics[index]).then(function(response) {
-        console.log(response);
-        for (var i = 0; i < response.data.tweets.length; i++) {
-          var screen_name = response.data.tweets[i].user.screen_name;
-          var id = response.data.tweets[i].id_str;
-          var url = { url: 'https://twitter.com/' + screen_name + '/status/' + id };
-          Data.getEmbeddedTweet(url).then(function(response) {
-            $scope.tweetsByTopic.push(response.data.embedded_tweet.html);
-          });
-        }
-      })
-      $window.localStorage.removeItem('topicIndex');
-    }
-
     $scope.searchTopic = function(index) {
+      var topic = $scope.top50topics[index];
       // store the index
-      $window.localStorage.setItem('topicIndex', index);
+      $window.localStorage.setItem('topic', JSON.stringify(topic));
       $window.location.href = '/searchbytopic';
     }
 

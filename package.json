@@ -18,11 +18,14 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^4.2.9",
     "morgan": "^1.6.1",
+    "oauth": "^0.9.15",
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0",
     "request": "^2.67.0",
-    "twit": "^2.2.11"
+    "twit": "^2.2.11",
+    "weather": "^0.1.0",
+    "yahoo-weather": "^2.2.2"
   },
   "devDependencies": {
     "should": "^7.1.1",

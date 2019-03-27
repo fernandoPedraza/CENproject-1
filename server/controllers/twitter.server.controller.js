@@ -17,11 +17,6 @@ var T = new Twit({
   strictSSL: true,
 })
 
-//T.get('search/tweets', { q: 'banana since:2011-07-11', count: 100 }, function(err, data, response) {
-//  console.log(data)
-//})
-
-
 exports.getGlobalTopics = function(req, res) {
   T.get('trends/place', { id: 1 }, function(err, data, response) {
     if (err) return res.json({ success: false, msg: 'Failed to get trends: ' +err });
@@ -40,15 +35,15 @@ exports.getEmbeddedTweet = function(req, res) {
   var url = req.body.url;
   T.get('statuses/oembed', { url: url, hide_media: true, hide_thread: true, aligin: "center" }, function(err, data, response) {
     if (err) return res.json({ success: false, msg: 'Unable to get embedded tweet: ' +err });
-    console.log(data);
     return res.json({ success: true, embedded_tweet: data });
   });
 }
 
 exports.getTweetsByTopic = function(req, res) {
+  console.log('here');
   var topic = req.body;
   console.log(topic);
-  T.get('search/tweets', { q: topic.query, count: 10, result_type: 'popular' }, function(err, data, response) {
+  T.get('search/tweets', { q: topic.query, count: 9, result_type: 'popular', tweet_mode: 'extended' }, function(err, data, response) {
     if (err) return res.json({ success: false, msg: 'Failed to get tweets: ' +err });
     return res.json({ success: true, tweets: data.statuses });
   })

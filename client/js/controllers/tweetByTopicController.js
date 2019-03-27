@@ -10,17 +10,19 @@ angular.module('tweet_by_topic').controller('TweetByTopicController', ['$scope',
     if ($window.localStorage.getItem('topic')) {
       // must be coming from the home page
       var topic = JSON.parse($window.localStorage.getItem('topic'));
-      console.log(topic);
       $scope.currentTopic = topic.name;
       Data.getTweetsByTopic(topic).then(function(response) {
         if (response.data.success && response.data.tweets.length > 0) {
           $scope.tweetsByTopic = [];
-          console.log(response);
           var tweets = response.data.tweets;
           for (i = 0; i < tweets.length; ++i) {
             // removing sublinks ... might not be necessary 
-            //var httpsIndex = tweets[i].full_text.indexOf('https://');
-            //tweets[i].full_text = tweets[i].full_text.substring(0, httpsIndex);
+            console.log(tweets[i]);
+            var httpsIndex = tweets[i].full_text.indexOf('https://');
+            if (httpsIndex != -1) {
+              tweets[i].link = tweets[i].full_text.substring(httpsIndex,);
+              tweets[i].full_text = tweets[i].full_text.substring(0, httpsIndex);
+            }
             $scope.tweetsByTopic.push(tweets[i]);
           }
         }

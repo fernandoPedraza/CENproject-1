@@ -45,9 +45,10 @@
 			<div class="text-center font-weight-bold mt-5" style="color: red;" ng-if="!tweetsByTopic">No results for "{{currentTopic}}" please try again</div>
       <div ng-if="tweetsByTopic" class="row mt-5">
         <div class="col-4 p-4" ng-repeat="tweet in tweetsByTopic" style="background-color: lightskyblue; border: 10px solid white;">
-					<img src="{{tweet.user.profile_image_url}}" alt="profile-picture">
-					<p class="font-weight-bold">{{tweet.user.screen_name}}</p>
+					<img class="rounded mx-auto d-block" src="{{tweet.user.profile_image_url}}" alt="profile-picture" style="height: 5em; width: 5em;">
+					<p class="font-weight-bold text-center">{{tweet.user.screen_name}}</p>
 					<p>{{tweet.full_text}}</p>
+					<a ng-if="tweet.link" class="font-weight-bold text-center" style="color: black;" href="{{tweet.link}}" target="_blank"><button type="button" class="btn btn-dark">View on Twitter</button></a>
         </div>
       </div>
     </div>

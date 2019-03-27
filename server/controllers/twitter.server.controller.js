@@ -30,7 +30,7 @@ exports.getGlobalTopics = function(req, res) {
 }
 
 exports.getTopTweets = function(req, res) {
-  T.get('search/tweets', { q: '?', count: 50, result_type: 'popular', /*tweet_mode: 'extended'*/ }, function(err, data, response) {
+  T.get('search/tweets', { q: '?', count: 6, result_type: 'popular' }, function(err, data, response) {
     if (err) return res.json({ success: false, msg: 'Failed to get tweets: ' +err });
     return res.json({ success: true, tweets: data.statuses });
   })
@@ -43,4 +43,13 @@ exports.getEmbeddedTweet = function(req, res) {
     console.log(data);
     return res.json({ success: true, embedded_tweet: data });
   });
+}
+
+exports.getTweetsByTopic = function(req, res) {
+  var topic = req.body;
+  console.log(topic);
+  T.get('search/tweets', { q: topic.query, count: 10, result_type: 'popular' }, function(err, data, response) {
+    if (err) return res.json({ success: false, msg: 'Failed to get tweets: ' +err });
+    return res.json({ success: true, tweets: data.statuses });
+  })
 }

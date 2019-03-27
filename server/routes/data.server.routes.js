@@ -12,4 +12,7 @@ router.route('/top_tweets')
 router.route('/embedded_tweet')
   .post(data.getEmbeddedTweet);
 
+router.route('/tweets_by_topic')
+  .post(data.getTweetsByTopic);
+
 module.exports = router;

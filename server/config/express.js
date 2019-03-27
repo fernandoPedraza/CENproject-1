@@ -32,6 +32,7 @@ module.exports.init = function() {
 
     // Serve static files
     app.use(express.static(path.join(__dirname, '../../client')));
+    app.use(express.static(path.join(__dirname, '../../client/styles')));
 
     // init passport
     require('./passport')
@@ -45,6 +46,13 @@ module.exports.init = function() {
         res.sendFile(path.join(__dirname, '../../client/signin.html'));
     });
 
+    app.get('/searchbytopic', function(req, res) {
+        res.sendFile(path.join(__dirname, '../../client/search-topic.html'));
+    });
+
+    app.get('/searchbylocation', function(req, res) {
+        res.sendFile(path.join(__dirname, '../../client/search-location.html'));
+    });
     /*Go to homepage for all routes not specified */
     app.get('*', function(req, res) {
         res.sendFile(path.join(__dirname, '../../client/index.html'));

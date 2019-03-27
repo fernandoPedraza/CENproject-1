@@ -10,26 +10,30 @@
 
   <body ng-controller="DataController">
 
-		<div class="header">
+    <div class="header">
 			<div class="header-wrapper">
 				<div class="header-container">
-					<a href="home.html" id="logo"><img src="images/logo.png" alt="logo"></a>
+					<a href="/" id="logo"><img src="images/blacklogo-sm.png" alt="logo"></a>
 					<ul class="nav-title">
-						<li class="tweetapp-title"> <a href="index.html">TweetApp</a></li>
+						<li class="tweetapp-title"> <a href="/">TweetApp</a></li>
 					</ul>
 					<ul class="navigation">
-						<li class="selected">
-							<a href="index.html">Home</a>
+						<li class="selected"><a href="/">Home</a></li>
+						<li><a href="searchbytopic">Search by Topic</a></li>
+						<li>
+							<a href="searchbylocation">Trends by Location</a>
 						</li>
-						<li> <a href="search-topic.html">Trends by Topic</a></li>
-						<li> <a href="seach-location.html">Trends by Location</a></li>
 					</ul>
-          <ul>
-            <li><a href="#" ng-click="logout()">Logout</a></li>
-          </ul>
+					<ul class="nav-logout">
+						<li> <a href="/users" ng-click="logout()">Log out</a></li>
+					</ul>
 				</div>
 			</div>
 		</div>
+
+
+
+
 
     <div class="container-fluid" ng-controller="DataController">
 
@@ -44,7 +48,7 @@
     						<h3>Top 50 Topics</h3>
                 <div class="row">
                   <div class="col-lg-4 col-md-6 text-center" ng-repeat="topic in top50topics">
-                    <a ng-class="{isBlack: $index % 2 == 1}" href="#">{{topic.name}}</a>
+                    <a ng-class="{isBlack: $index % 2 == 1}" href="javascript:;" ng-click="searchTopic($index)">{{topic.name}}</a>
                   </div>
                 </div>
               </div>
@@ -69,6 +73,5 @@
     <script src="js/app.js"></script>
     <script src="js/factories/dataFactory.js"></script>
     <script src="js/controllers/dataController.js"></script>
-    <script src="js/controllers/usersController.js"></script>
   </body>
 </html>

@@ -19,10 +19,8 @@
 					</ul>
 					<ul class="navigation">
 						<li class="selected"><a href="/">Home</a></li>
-						<li><a href="searchbytopic">Search by Topic</a></li>
-						<li>
-							<a href="searchbylocation">Trends by Location</a>
-						</li>
+						<li> <a href="search-topic.html">Search by Topic</a></li>
+						<li> <a href="search-location.html">Search by Location</a></li>
 					</ul>
 					<ul class="nav-logout">
 						<li> <a href="/users" ng-click="logout()">Log out</a></li>
@@ -30,10 +28,6 @@
 				</div>
 			</div>
 		</div>
-
-
-
-
 
     <div class="container-fluid" ng-controller="DataController">
 
@@ -43,19 +37,19 @@
   				<div class="mx-auto" id="chart_div"></div>
 
 
-    				<div class="row">
-    					<div class="col-md-6 px-1">
+    				<div class="row" style="margin-top:20px;">
+    					<div class="col-sm-5 px-1">
     						<h3>Top 50 Topics</h3>
-                <div class="row">
-                  <div class="col-lg-4 col-md-6 text-center" ng-repeat="topic in top50topics">
+                <div class="row" style="width:95%; margin:8px auto auto auto;">
+                  <div class="col-4 text-center" ng-repeat="topic in top50topics">
                     <a ng-class="{isBlack: $index % 2 == 1}" href="javascript:;" ng-click="searchTopic($index)">{{topic.name}}</a>
                   </div>
                 </div>
               </div>
-    					<div class="col-md-6 px-1">
+    					<div class="col-md-7 px-1">
     						<h3>Tweets</h3>
-                <div class="row">
-                  <div class="col-xl-4 px-2 justify-content-center" ng-repeat="tweet in topTweets">
+                <div class="row" style="padding:0 30px 0 40px;">
+                  <div class="col-xl-4 px-2" ng-repeat="tweet in topTweets">
                     <div ng-bind-html="tweet" class="">
                       <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
                     </div>

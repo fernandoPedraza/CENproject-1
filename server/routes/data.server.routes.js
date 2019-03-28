@@ -15,4 +15,10 @@ router.route('/embedded_tweet')
 router.route('/tweets_by_topic')
   .post(data.getTweetsByTopic);
 
+router.route('/tweets_by_location')
+  .post(data.getTweetsByLocation);
+
+router.route('/trends_by_location')
+  .post(data.getTrendsByLocation);
+
 module.exports = router;

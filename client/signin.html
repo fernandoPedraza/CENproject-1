@@ -4,21 +4,19 @@
 		<link href="styles/style.css" rel="stylesheet" type="text/css"/>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   </head>
-  
-	<body style="background-image:url(images/biglogo.png);">
-	
+
+	<body style="background-image:url(images/biglogo.png);" ng-app="usersApp">
 		<div class="header">
 			<div class="login-title">
 				<a id="logo"><img src="images/blacklogo-sm.png" alt="logo"/></a>
 				<h1>TweetApp</h1>
 			</div>
 		</div>
-		
-		<div class="signin-content">
+		<div class="signin-content" ng-controller="UsersController">
 			<div class="row" style="width:100%;">
 				<div class="col-7">
 					<div class="signup-box">
-						<form action="/action_page.php">
+						<form>
 							<div class="row">
 								<div class="col">
 									<h4>CREATE A NEW ACCOUNT</h4>
@@ -27,27 +25,27 @@
 							<div class="row">
 								<div class="col">
 									<p>Username<span style="color:red;">*</span></p>
-									<input type="text" name="Username">
-									<p>Password<span style="color:red;">*</span></p>
-									<input type="password" name="Password">
-									<p>Confirm Password<span style="color:red;">*</span></p>
-									<input type="password" name="Confirm-Password">
+									<input type="text" name="Username" ng-model="register.username"><p ng-if="noUsername" class="individual-alert">{{noUsername}}</p>
 									<p>Email<span style="color:red;">*</span></p>
-									<input type="text" name="Email">
+									<input type="text" name="Email" ng-model="register.email"><p ng-if="noEmail" class="individual-alert">{{noEmail}}</p><p ng-if="noEmailMatch" class="individual-alert">{{noEmailMatch}}</p>
 									<p>Confirm Email<span style="color:red;">*</span></p>
-									<input type="text" name="Confirm-Email">
+									<input type="text" name="Confirm-Email" ng-model="register.confemail"><p ng-if="noConfirmEmail" class="individual-alert">{{noConfirmEmail}}</p><p ng-if="noEmailMatch" class="individual-alert">{{noEmailMatch}}</p>
+									<p>Password<span style="color:red;">*</span></p>
+									<input type="password" name="Password" ng-model="register.password"><p ng-if="noPassword" class="individual-alert">{{noPassword}}</p><p ng-if="noPasswordMatch" class="individual-alert">{{noPasswordMatch}}</p>
+									<p>Confirm Password<span style="color:red;">*</span></p>
+									<input type="password" name="Confirm-Password" ng-model="register.confpassword"><p ng-if="noConfirmPassword" class="individual-alert">{{noConfirmPassword}}</p><p ng-if="noPasswordMatch" class="individual-alert">{{noPasswordMatch}}</p>
 								</div>
 							</div>
 						</form>
-						
-						<form style="text-align:center;" action="html5.html">
-								<input class="signup-button" type="submit" value="CREATE ACCOUNT" />
+
+						<form style="text-align:center;">
+								<input class="signup-button" type="submit" value="CREATE ACCOUNT" ng-click="registerUser()" />
 						</form>
 					</div>
 				</div>
-				<div class="col-4">
+				<div class="col-4" ng-controller="UsersController">
 					<div class="login-box">
-						<form action="/action_page.php">
+						<form>
 							<div class="row">
 								<div class="col">
 									<h4>USER SIGN-IN</h4>
@@ -59,14 +57,14 @@
 									<p>Password:</p>
 								</div>
 								<div class="col-sm">
-									<input type="text" name="Username">
-									<input type="password" name="Password">
+									<input type="text" name="Username" ng-model="login.username"><p ng-if="noLogUsername" class="individual-alert">{{noLogUsername}}</p>
+									<input type="password" name="Password" ng-model="login.password"><p ng-if="noLogPassword" class="individual-alert">{{noLogPassword}}</p>
 								</div>
 							</div>
 						</form>
-						
-						<form style="text-align:center;" action="html5.html">
-								<input class="signin-button" type="submit" value="LOGIN" />
+
+						<form style="text-align:center;">
+								<input class="signin-button" type="submit" value="LOGIN" ng-click="loginUser()"/>
 						</form>
 						<div style="text-align:center;">
 							<a style="font-size:13px;" href="forgot-pass.html">Forgot password?</a>
@@ -75,9 +73,12 @@
 				</div>
 			</div>
 		</div>
-		
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="https://code.angularjs.org/1.4.3/angular.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/factories/usersFactory.js"></script>
+    <script src="js/controllers/usersController.js"></script>
   </body>
 </html>

@@ -1,12 +1,18 @@
 var path = require('path'),
     express = require('express'),
+    expressValidator = require('express-validator'),
     mongoose = require('mongoose'),
     morgan = require('morgan'),
     cors = require('cors'),
+    passport = require('passport'),
+    session = require('express-session'),
     bodyParser = require('body-parser'),
+    cookieParser = require('cookie-parser'),
+    jwt = require('express-jwt'),
     config = require('./config'),
-    userAuthRouter = require('../routes/users.server.routes'),
+    userAuthRouter = require('../routes/userAuth.server.routes'),
     dataRouter = require('../routes/data.server.routes');
+
 
 module.exports.init = function() {
     //connect to database
@@ -24,24 +30,29 @@ module.exports.init = function() {
     //body parsing middleware
     app.use(bodyParser.json());
 
-    /* Serve static files */
+    // Serve static files
     app.use(express.static(path.join(__dirname, '../../client')));
+    app.use(express.static(path.join(__dirname, '../../client/styles')));
 
-    /* Use the userAuth router when directed to the /login page */
-    app.use('/login', userAuthRouter);
-    app.get('/login', function(req, res) {
-        res.sendFile(path.join(__dirname, '../../client/login.html'));
-    });
+    // init passport
+    require('./passport')
+    app.use(passport.initialize());
 
-    /* Use the userAuth router when directed to the /register page */
-    app.use('/register', userAuthRouter);
-    app.get('/register', function(req, res) {
-        res.sendFile(path.join(__dirname, '../../client/registerUser.html'));
-    });
-
-    /* Use the data router for requests to the API */
+    // Assign routers
     app.use('/api', dataRouter);
+    app.use('/auth', userAuthRouter);
 
+    app.get('/users', function(req, res) {
+        res.sendFile(path.join(__dirname, '../../client/signin.html'));
+    });
+
+    app.get('/searchbytopic', function(req, res) {
+        res.sendFile(path.join(__dirname, '../../client/search-topic.html'));
+    });
+
+    app.get('/searchbylocation', function(req, res) {
+        res.sendFile(path.join(__dirname, '../../client/search-location.html'));
+    });
     /*Go to homepage for all routes not specified */
     app.get('*', function(req, res) {
         res.sendFile(path.join(__dirname, '../../client/index.html'));

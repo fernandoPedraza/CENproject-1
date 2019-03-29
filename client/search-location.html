@@ -1,43 +1,72 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="locationApp">
   <head>
 		<link href="styles/style.css" rel="stylesheet" type="text/css"/>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+		<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
   </head>
-  
-  <body ng-app="tweetApp">
-	
+
+  <body ng-controller="TweetByLocationController">
+
 		<div class="header">
 			<div class="header-wrapper">
 				<div class="header-container">
-					<a href="index.html" id="logo"><img src="images/blacklogo-sm.png" alt="logo"></a>
+					<a href="/" id="logo"><img src="images/blacklogo-sm.png" alt="logo"></a>
 					<ul class="nav-title">
-						<li class="tweetapp-title"> <a href="index.html">TweetApp</a></li>
+						<li class="tweetapp-title"> <a href="/">TweetApp</a></li>
 					</ul>
 					<ul class="navigation">
-						<li><a href="index.html">Home</a></li>
-						<li><a href="search-topic.html">Trends by Topic</a></li>
-						<li class="selected">
-							<a href="seach-location.html">Trends by Location</a>
+						<li><a href="/">Home</a></li>
+						<li><a href="searchbytopic">Search by Topic</a></li>
+						<li  class="selected">
+							<a href="searchbylocation">Trends by Location</a>
 						</li>
 					</ul>
 					<ul class="nav-logout">
-						<li> <a href="signin.html">Log out</a></li>
+						<li> <a href="/users" ng-click="logout()">Log out</a></li>
 					</ul>
 				</div>
 			</div>
 		</div>
-		
 		<div class="search-location-content">
 			<div class="searchbar-container">
 				<div class="active-cyan-3 active-cyan-4 mb-4">
-					<input class="form-control" type="text" placeholder="Search by Location" aria-label="Search">
+					<form action="">
+						<input ng-model="locationQuery" class="form-control" type="text" placeholder="Search by Location" aria-label="Search">
+						<input type="submit" style="display: none" ng-click="searchForLocation()"/>
+					</form>
 				</div>
 			</div>
 		</div>
-		
+
+		<div class="container">
+			<h3 class="text-center" ng-if="currentLocation && (tweetsByLocation || trendsByLocation)">Showing results for: "{{currentLocation.city}}, {{currentLocation.level1long}}"</h3>
+			<p class="text-center mt-2" ng-if="currentLocation && (tweetsByLocation || trendsByLocation)">Not what you were expecting? Try to be more specific</p>
+			<div class="text-center font-weight-bold mt-5" style="color: red;" ng-if="currentLocation && !tweetsByLocation && !trendsByLocation">No results for "{{currentLocation}}" please try again</div>
+			<h4 ng-if="trendsByLocation" class="text-center mt-3">Trends</h4>
+			<div ng-if="trendsByLocation" class="row mt-2">
+				<div class="col-4 p-4" ng-repeat="trend in trendsByLocation" style="background-color: lightskyblue; border: 10px solid white;">
+					<a href="javascript:;" ng-click="searchTopic($index)"><p class="text-center font-weight-bold pt-3" style="color: black;">{{trend.name}}</p></a>
+				</div>
+			</div>
+			<h4 class="text-center mt-3" ng-if="tweetsByLocation">Tweets</h4>
+      <div ng-if="tweetsByLocation" class="row mt-2">
+        <div class="col-4 p-4" ng-repeat="tweet in tweetsByLocation" style="background-color: lightskyblue; border: 10px solid white;">
+					<img class="rounded mx-auto d-block" src="{{tweet.user.profile_image_url}}" alt="profile-picture" style="height: 5em; width: 5em;">
+					<p class="text-center font-weight-bold pt-3">{{tweet.user.screen_name}}</p>
+					<p>{{tweet.full_text}}</p>
+					<a ng-if="tweet.link" class="font-weight-bold text-center" style="color: black;" href="{{tweet.link}}" target="_blank"><button type="button" class="btn btn-dark">View on Twitter</button></a>
+        </div>
+      </div>
+    </div>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script src="https://code.angularjs.org/1.4.3/angular.js"></script>
+    <script src="https://code.angularjs.org/1.4.3/angular.js"></script><script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular-sanitize.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/factories/tweetByLocationFactory.js"></script>
+    <script src="js/controllers/tweetByLocationController.js"></script>
   </body>
 </html>

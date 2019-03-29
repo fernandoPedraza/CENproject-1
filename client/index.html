@@ -8,24 +8,22 @@
 
 	</head>
 
-  <body >
+  <body ng-controller="DataController">
 
-		<div class="header">
+    <div class="header">
 			<div class="header-wrapper">
 				<div class="header-container">
-					<a href="index.html" id="logo"><img src="images/blacklogo-sm.png" alt="logo"></a>
+					<a href="/" id="logo"><img src="images/blacklogo-sm.png" alt="logo"></a>
 					<ul class="nav-title">
-						<li class="tweetapp-title"> <a href="index.html">TweetApp</a></li>
+						<li class="tweetapp-title"> <a href="/">TweetApp</a></li>
 					</ul>
 					<ul class="navigation">
-						<li class="selected">
-							<a href="index.html">Home</a>
-						</li>
-						<li> <a href="search-topic.html">Trends by Topic</a></li>
-						<li> <a href="search-location.html">Trends by Location</a></li>
+						<li class="selected"><a href="/">Home</a></li>
+						<li> <a href="search-topic.html">Search by Topic</a></li>
+						<li> <a href="search-location.html">Search by Location</a></li>
 					</ul>
 					<ul class="nav-logout">
-						<li> <a href="signin.html">Log out</a></li>
+						<li> <a href="/users" ng-click="logout()">Log out</a></li>
 					</ul>
 				</div>
 			</div>
@@ -35,16 +33,13 @@
 
   		<div class="home-content">
   			<h1>WHAT IN THE WORLD IS TRENDING?</h1>
-
   				<div class="mx-auto" id="chart_div"></div>
-
-
     				<div class="row" style="margin-top:20px;">
     					<div class="col-sm-5 px-1">
     						<h3>Top 50 Topics</h3>
                 <div class="row" style="width:95%; margin:8px auto auto auto;">
                   <div class="col-4 text-center" ng-repeat="topic in top50topics">
-                    <a ng-class="{isBlack: $index % 2 == 1}" href="#">{{topic.name}}</a>
+                    <a ng-class="{isBlack: $index % 2 == 1}" href="javascript:;" ng-click="searchTopic($index)">{{topic.name}}</a>
                   </div>
                 </div>
               </div>

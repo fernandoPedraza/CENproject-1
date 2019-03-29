@@ -1,3 +1,7 @@
+.individual-alert {
+	color: red;
+}
+
 a { outline:none; }
 
 a img {
@@ -137,6 +141,55 @@ article[data-scribe] {
 	margin-top: 20px;
 	width:30%;
 }
+.search-topic-content .tweet-box {
+	padding-bottom:10px;
+	background-color: white;
+	border: 1px solid #75c7ff;
+	margin:5px;
+}
+.search-topic-content .tweet-box img.user-image {
+	border-radius:50%;
+}
+.search-topic-content p.user-info {
+	font-weight:bold;
+	margin:0;
+}
+.search-topic-content .single-tweet {
+	padding: 0 10px 0 0;
+	margin-top:1px;
+}
+.search-topic-content .single-tweet div{
+	padding: 0 0 10px 0;
+}
+.search-topic-content .tweet-link {
+	height:75px;
+	padding:5px;
+	color:black;
+	border:1px solid #f0efef;
+	text-decoration:none;
+	display:block;
+	width:100%;
+}
+.search-topic-content .tweet-link .tweet-date{
+	margin:0 10px 0 0;
+	text-align:right;
+	font-size:10px;
+	color:#888787;
+}
+.search-topic-content .view-button {
+	padding:0;
+	background-color:#75c7ff;
+	max-width:none;
+}
+.search-topic-content .view-button a {
+	text-decoration:none;
+	height:100%;
+	padding:0 15px 0 15px;
+	display:flex;
+	align-items:center;
+}
+.search-topic-content .view-button:hover {border:.5px inset #6d86ff;}
+.search-topic-content .tweet-link:hover {background-color:#ebf9ff;}
 
 /*----------------------- Sign In ----------------------*/
 .header .login-title {
@@ -184,6 +237,7 @@ article[data-scribe] {
 	width:100%;
 }
 .signin-content .signup-box .col input {
+	background-color:white;
 	margin-bottom:16px;
 	width:100%;
 }
@@ -196,3 +250,4 @@ article[data-scribe] {
 	width:40%;
 	height:40px;
 }
+

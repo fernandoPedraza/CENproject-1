@@ -18,7 +18,7 @@ angular.module('data').controller('DataController', ['$scope', '$window', 'Data'
         var rows = [['Name', 'Volume', { role: 'style' }]];
         for (var i = 0; i < $scope.top50topics.length; i++) {
           if ($scope.top50topics[i].tweet_volume <= 0) continue;
-          var topic = [$scope.top50topics[i].name, $scope.top50topics[i].tweet_volume, 'stroke-color: #703593; stroke-width: 4; fill-color: #C5A5CF'];
+          var topic = [$scope.top50topics[i].name, $scope.top50topics[i].tweet_volume, 'fill-color: #80ccff'];
           rows.push(topic);
         }
         var data = google.visualization.arrayToDataTable(rows);
@@ -26,7 +26,9 @@ angular.module('data').controller('DataController', ['$scope', '$window', 'Data'
         // Set chart options
         var options = {'title':'Tweet volume for trending topics',
                        'width':$window.innerWidth - 50,
-                       'height':400};
+                       'height':400,
+                       'legend':{'position':'none'}
+                      };
 
         // Instantiate and draw our chart, passing in some options.
         var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));

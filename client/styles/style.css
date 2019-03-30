@@ -124,16 +124,27 @@ article[data-scribe] {
 	padding:0;
 	text-align:center;
 }
-.home-content .isBlack {
-	color:black;
-}
 .home-content .col-md-7 {
 	border-left: gray solid .5px;
 }
-.home-content .text-center {
+.home-content .row .text-center {
+	display:flex;
+	align-items:center;
 	height:46px;
 	word-wrap:break-word;
 	padding:0;
+}
+.home-content .row .text-center:hover {background-color:#b0d8fa;}
+.home-content .topic-link {
+	display:flex;
+	align-items:center;
+	height:100%;
+	width:100%;
+	color:black;
+	text-decoration:none;
+}
+.home-content .isBlack a {
+	color:#4999ff;
 }
 /*---------------------- Search by Topic ------------------------*/
 .searchbar-container {
@@ -165,7 +176,7 @@ article[data-scribe] {
 }
 .search-topic-content .tweet-link {
 	overflow:hidden;
-	height:60px;
+	height:58px;
 	padding:5px 10px 5px 10px;
 	color:black;
 	text-decoration:none;

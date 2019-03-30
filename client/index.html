@@ -37,9 +37,9 @@
     				<div class="row" style="margin-top:20px;">
     					<div class="col-sm-5 px-1">
     						<h3>Top 50 Topics</h3>
-                <div class="row" style="width:95%; margin:8px auto auto auto;">
-                  <div class="col-4 text-center" ng-repeat="topic in top50topics">
-                    <a ng-class="{isBlack: $index % 2 == 1}" href="javascript:;" ng-click="searchTopic($index)">{{topic.name}}</a>
+                <div class="row justify-content-md-center" style="width:95%; margin:8px auto auto auto;">
+                  <div class="col-4 text-center justify-content-center" ng-class="{isBlack: $index % 2 == 1}" ng-repeat="topic in top50topics">
+                    <a class="topic-link justify-content-center" href="javascript:;" ng-click="searchTopic($index)">{{topic.name}}</a>
                   </div>
                 </div>
               </div>

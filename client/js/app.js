@@ -10,3 +10,10 @@ var app2 = angular.module('usersApp', ['users']);
 
 angular.module('data', [])
 var app3 = angular.module('tweetApp', ['data', 'ngSanitize']);
+
+angular.module('tweet_by_topic', [])
+var app3 = angular.module('topicApp', ['tweet_by_topic']);
+
+angular.module('tweet_by_location', [])
+
+var app3 = angular.module('locationApp', ['tweet_by_location']);

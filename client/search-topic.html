@@ -23,7 +23,7 @@
 						</li>
 					</ul>
 					<ul class="nav-logout">
-						<li> <a href="/users" ng-click="logout()">Log out</a></li>
+						<li> <a href="javascript:;" ng-click="logout()">Log out</a></li>
 					</ul>
 				</div>
 			</div>
@@ -69,18 +69,7 @@
 				</div>
 			</div>
 		</div>
-    <div class="container">
-			<h3 class="text-center" ng-if="currentTopic">Showing results for: "{{currentTopic}}"</h3>
-			<div class="text-center font-weight-bold mt-5" style="color: red;" ng-if="currentTopic && !tweetsByTopic">No results for "{{currentTopic}}" please try again</div>
-      <div ng-if="tweetsByTopic" class="row mt-5">
-        <div class="col-4 p-4" ng-repeat="tweet in tweetsByTopic" style="background-color: lightskyblue; border: 10px solid white;">
-					<img class="rounded mx-auto d-block" src="{{tweet.user.profile_image_url}}" alt="profile-picture" style="height: 5em; width: 5em;">
-					<p class="text-center font-weight-bold pt-3">{{tweet.user.screen_name}}</p>
-					<p>{{tweet.full_text}}</p>
-					<a ng-if="tweet.link" class="font-weight-bold text-center" style="color: black;" href="{{tweet.link}}" target="_blank"><button type="button" class="btn btn-dark">View on Twitter</button></a>
-        </div>
-      </div>
-    </div>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="https://code.angularjs.org/1.4.3/angular.js"></script>

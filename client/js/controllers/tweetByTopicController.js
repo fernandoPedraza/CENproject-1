@@ -6,6 +6,10 @@ angular.module('tweet_by_topic').controller('TweetByTopicController', ['$scope',
       $window.location.href = '/users';
     }
 
+    if ($window.localStorage.getItem('location')) {
+      $window.localStorage.removeItem('location');
+    }
+
     $scope.tweetsByTopic = undefined;
     if ($window.localStorage.getItem('topic')) {
       // must be coming from the home page
@@ -34,8 +38,16 @@ angular.module('tweet_by_topic').controller('TweetByTopicController', ['$scope',
       $window.localStorage.setItem('topic', JSON.stringify(topic));
     }
 
+    $scope.removeTopic = function() {
+      if ($window.localStorage.getItem('topic')) {
+        $window.localStorage.removeItem('topic');
+      }
+      console.log('remove topic')
+    }
+
     $scope.logout = function() {
       $window.localStorage.clear();
+      $window.href = '/users'
     };
   }
 ]);

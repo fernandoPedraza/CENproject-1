@@ -6,6 +6,10 @@ angular.module('tweet_by_location').controller('TweetByLocationController', ['$s
       $window.location.href = '/users';
     }
 
+    if ($window.localStorage.getItem('topic')) {
+      $window.localStorage.removeItem('topic');
+    }
+
     $scope.tweetsByLocation = undefined;
     $scope.trendsByLocation = undefined;
     if ($window.localStorage.getItem('location')) {
@@ -55,6 +59,7 @@ angular.module('tweet_by_location').controller('TweetByLocationController', ['$s
 
     $scope.logout = function() {
       $window.localStorage.clear();
+      $window.href = '/users';
     };
   }
 ]);

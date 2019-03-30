@@ -11,6 +11,13 @@ angular.module('data').controller('DataController', ['$scope', '$window', 'Data'
       $window.location.href = '/users';
     }
 
+    if ($window.localStorage.getItem('location')) {
+      $window.localStorage.removeItem('location');
+    }
+    if ($window.localStorage.getItem('topic')) {
+      $window.localStorage.removeItem('topic');
+    }
+
     if ($window.location.pathname == '/') {
       Data.getGlobalTopics().then(function(response) {
         $scope.top50topics = response.data.trending_topics;
@@ -50,6 +57,7 @@ angular.module('data').controller('DataController', ['$scope', '$window', 'Data'
 
     $scope.logout = function() {
       $window.localStorage.clear();
+      $window.href = '/users';
     };
 
     $scope.searchTopic = function(index) {

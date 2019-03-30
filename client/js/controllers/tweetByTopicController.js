@@ -47,7 +47,7 @@ angular.module('tweet_by_topic').controller('TweetByTopicController', ['$scope',
 
     $scope.logout = function() {
       $window.localStorage.clear();
-      $window.href = '/users'
+      $window.location.href = '/users'
     };
   }
 ]);

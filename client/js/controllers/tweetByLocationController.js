@@ -58,8 +58,9 @@ angular.module('tweet_by_location').controller('TweetByLocationController', ['$s
     }
 
     $scope.logout = function() {
+      console.log('hello')
       $window.localStorage.clear();
-      $window.href = '/users';
+      $window.location.href = '/users';
     };
   }
 ]);

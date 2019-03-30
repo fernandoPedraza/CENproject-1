@@ -57,7 +57,7 @@ angular.module('data').controller('DataController', ['$scope', '$window', 'Data'
 
     $scope.logout = function() {
       $window.localStorage.clear();
-      $window.href = '/users';
+      $window.location.href = '/users';
     };
 
     $scope.searchTopic = function(index) {

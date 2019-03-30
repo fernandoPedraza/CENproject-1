@@ -15,4 +15,5 @@ angular.module('tweet_by_topic', [])
 var app3 = angular.module('topicApp', ['tweet_by_topic']);
 
 angular.module('tweet_by_location', [])
+
 var app3 = angular.module('locationApp', ['tweet_by_location']);

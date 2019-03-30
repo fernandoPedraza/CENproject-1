@@ -163,7 +163,11 @@ article[data-scribe] {
 }
 .search-topic-content p.user-info {
 	font-weight:bold;
-	margin:0;
+	margin:0 0 5px 0;
+}
+.search-topic-content .user-display-name {
+	color:#888787;
+	font-weight:normal;
 }
 .search-topic-content .single-tweet {
 	border:1px solid #f0efef;

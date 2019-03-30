@@ -43,16 +43,16 @@
 				<div ng-if="tweetsByTopic" class="row mt-3 justify-content-md-center">
 				
 					<div class="tweet-box col-5" ng-repeat="tweet in tweetsByTopic">
-						<div class="row" style="height:100px;">
+						<div class="row" style="height:65px;">
 							<div class="col-2 text-center" style="padding:12px;">
 								<img class="user-image" src="{{tweet.user.profile_image_url}}" alt="profile-picture">
-								<p class="user-info">{{tweet.user.screen_name}}</p>
 							</div>
 							<div class="col-lg" style="padding:10px;">
-								<p class="user-info">Followers: </p>
-								<p class="user-info">Following: </p>
+								<p class="user-info">Followers: <span style="font-weight:normal">{{tweet.user.followers_count}}</span></p>
+								<p class="user-info">Friends: <span style="font-weight:normal">{{tweet.user.friends_count}}</span></p>
 							</div>
 						</div>
+						<p class="user-info">{{tweet.user.name}} <span class="user-display-name">@{{tweet.user.screen_name}}</span></p>
 						<div class="row single-tweet">
 							<div class="col-12">
 								<a class="tweet-link" ng-if="tweet.link" href="{{tweet.link}}">{{tweet.full_text}}</a>

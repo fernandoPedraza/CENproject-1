@@ -16,6 +16,7 @@
     "express-session": "^1.15.6",
     "express-validator": "^5.3.1",
     "jsonwebtoken": "^8.5.1",
+    "masonry-layout": "^4.2.2",
     "mongoose": "^4.2.9",
     "morgan": "^1.6.1",
     "node-geocode": "^0.2.0",

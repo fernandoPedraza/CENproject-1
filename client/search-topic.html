@@ -37,8 +37,38 @@
 					</form>
 				</div>
 			</div>
+			<div>
+				<h3 class="text-center" ng-if="currentTopic">Showing results for: "{{currentTopic}}"</h3>
+				<div class="text-center font-weight-bold mt-5" style="color: red;" ng-if="currentTopic && !tweetsByTopic">No results for "{{currentTopic}}" please try again</div>
+				<div ng-if="tweetsByTopic" class="row mt-3 justify-content-md-center">
+				
+					<div class="tweet-box col-5" ng-repeat="tweet in tweetsByTopic">
+						<div class="row" style="height:100px;">
+							<div class="col-2 text-center" style="padding:12px;">
+								<img class="user-image" src="{{tweet.user.profile_image_url}}" alt="profile-picture">
+								<p class="user-info">{{tweet.user.screen_name}}</p>
+							</div>
+							<div class="col-lg" style="padding:10px;">
+								<p class="user-info">Followers: </p>
+								<p class="user-info">Following: </p>
+							</div>
+						</div>
+						<div class="row single-tweet">
+							<div class="col-12">
+								<a class="tweet-link" ng-if="tweet.link" href="{{tweet.link}}">{{tweet.full_text}}</a>
+								<p class="tweet-date">{{tweet.created_at}}</p>
+							</div>
+						</div>
+						<div class="row single-tweet">
+							<div class="col-12">
+								<a class="tweet-link" ng-if="tweet.link" href="{{tweet.link}}">{{tweet.full_text}}</a>
+								<p class="tweet-date">{{tweet.created_at}}</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
-
     <div class="container">
 			<h3 class="text-center" ng-if="currentTopic">Showing results for: "{{currentTopic}}"</h3>
 			<div class="text-center font-weight-bold mt-5" style="color: red;" ng-if="currentTopic && !tweetsByTopic">No results for "{{currentTopic}}" please try again</div>
@@ -51,7 +81,6 @@
         </div>
       </div>
     </div>
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="https://code.angularjs.org/1.4.3/angular.js"></script>

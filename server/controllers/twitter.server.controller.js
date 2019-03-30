@@ -100,5 +100,4 @@ exports.getTrendsByLocation = function(req, res) {
       });
     });
   });
-
 }

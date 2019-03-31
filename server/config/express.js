@@ -32,11 +32,6 @@ module.exports.init = function() {
 
     // Serve static files
     app.use(express.static(path.join(__dirname, '../../client')));
-    app.use(express.static(path.join(__dirname, '../../client/styles')));
-
-    // init passport
-    require('./passport')
-    app.use(passport.initialize());
 
     // Assign routers
     app.use('/api', dataRouter);

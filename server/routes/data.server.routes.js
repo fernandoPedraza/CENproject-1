@@ -3,6 +3,8 @@ var data = require('../controllers/twitter.server.controller.js'),
     express = require('express'),
     router = express.Router();
 
+router.use(data.authValidate);
+
 router.route('/global_topics')
   .get(data.getGlobalTopics);
 
@@ -20,5 +22,7 @@ router.route('/tweets_by_location')
 
 router.route('/trends_by_location')
   .post(data.getTrendsByLocation);
+
+
 
 module.exports = router;

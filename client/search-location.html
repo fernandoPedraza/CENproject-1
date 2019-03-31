@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="locationApp">
+<html>
   <head>
 		<link href="styles/style.css" rel="stylesheet" type="text/css"/>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -23,7 +23,7 @@
 						</li>
 					</ul>
 					<ul class="nav-logout">
-						<li> <a href="/users" ng-click="logout()">Log out</a></li>
+						<li> <a href="javascript:;" ng-click="logout()">Log out</a></li>
 					</ul>
 				</div>
 			</div>
@@ -43,6 +43,11 @@
 			<h3 class="text-center" ng-if="currentLocation && (tweetsByLocation || trendsByLocation)">Showing results for: "{{currentLocation.city}}, {{currentLocation.level1long}}"</h3>
 			<p class="text-center mt-2" ng-if="currentLocation && (tweetsByLocation || trendsByLocation)">Not what you were expecting? Try to be more specific</p>
 			<div class="text-center font-weight-bold mt-5" style="color: red;" ng-if="currentLocation && !tweetsByLocation && !trendsByLocation">No results for "{{currentLocation}}" please try again</div>
+		</div>
+		<div class="container-fluid">
+				<div id="chart_div"></div>
+		</div>
+		<div class="container">
 			<h4 ng-if="trendsByLocation" class="text-center mt-3">Trends</h4>
 			<div ng-if="trendsByLocation" class="row mt-2">
 				<div class="col-4 p-4" ng-repeat="trend in trendsByLocation" style="background-color: lightskyblue; border: 10px solid white;">

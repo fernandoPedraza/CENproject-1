@@ -3,7 +3,8 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema,
     bcrypt = require('bcryptjs'),
     crypto = require('crypto'),
-    jwt = require('jsonwebtoken');
+    jwt = require('jsonwebtoken'),
+    config = require('../config/config');
 
 var userSchema = new Schema({
   username: { type: String,
@@ -19,27 +20,20 @@ var userSchema = new Schema({
       required: true,
       unique: true
   },
-  salt: String,
   created_at: Date,
   updated_at: Date
 })
 
 userSchema.methods.generateJwt = function() {
-  var expiry = new Date();
-  expiry.setDate(expiry.getDate() + 7);
   return jwt.sign({
     _id: this._id,
     email: this.email,
-    name: this.name,
-    exp: parseInt(expiry.getTime() / 1000),
-  }, "Some Secret code");
+  }, 
+  config.secret,
+  {
+    expiresIn: "1h"
+  });
 }
-
-userSchema.methods.validPassword = function(password) {
-  var hash = crypto.pbkdf2Sync(password, this.salt, 1000, 64, 'sha512').toString('hex');
-  return this.password == hash;
-}
-
 
 /* create a 'pre' function that adds the updated_at (and created_at if not already there) property */
 userSchema.pre('save', function(next) {

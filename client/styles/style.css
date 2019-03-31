@@ -185,6 +185,7 @@ article[data-scribe] {
 	text-decoration:none;
 	display:block;
 	width:100%;
+	margin-bottom:3px;
 }
 .search-topic-content .tweet-date{
 	margin:0 10px 0 0;

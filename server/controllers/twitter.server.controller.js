@@ -2,7 +2,6 @@
 var mongoose = require('mongoose'),
     User = require('../models/user.server.model.js'),
     bcrypt = require('bcryptjs'),
-    passport = require('passport'),
     jwt = require('jsonwebtoken'),
     config = require('../config/config'),
     NodeGeocoder = require('node-geocoder');
@@ -54,10 +53,8 @@ exports.getEmbeddedTweet = function(req, res) {
 }
 
 exports.getTweetsByTopic = function(req, res) {
-  console.log('here');
   var topic = req.body;
-  console.log(topic);
-  T.get('search/tweets', { q: topic.query, count: 9, result_type: 'popular', tweet_mode: 'extended' }, function(err, data, response) {
+  T.get('search/tweets', { q: topic.query, count: 50, result_type: 'popular', tweet_mode: 'extended' }, function(err, data, response) {
     if (err) return res.json({ success: false, msg: 'Failed to get tweets: ' +err });
     return res.json({ success: true, tweets: data.statuses });
   })
@@ -70,7 +67,6 @@ exports.getTweetsByLocation = function(req, res) {
     if (err) return res.json({ success: false, msg: 'Invalid location: ' +err });
     var data = response[0];
     if (!data) return res.json({ success: false, msg: 'No data for this location: ' + location  }); 
-    console.log(data);
     var locationFound = { neighborhood: data.extra.neighborhood, level1long: data.administrativeLevels.level1long, city: data.city };
     var lat = data.latitude.toString();
     var long = data.longitude.toString();
@@ -100,4 +96,18 @@ exports.getTrendsByLocation = function(req, res) {
       });
     });
   });
+}
+
+exports.authValidate = function(req, res, next) {
+  try {
+    const decoded = jwt.verify(req.headers.authorization.split(' ')[1], config.secret)
+    req.userData = decoded;
+    next();
+  } catch (err) {
+    return res.json({
+      notAuthorized: true,
+      success: false,
+      msg: 'Authorization Failed'
+    });
+  }
 }

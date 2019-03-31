@@ -2,42 +2,81 @@
 const mongoose = require('mongoose'),
     User = require('../models/user.server.model.js'),
     bcrypt = require('bcryptjs'),
-    crypto = require('crypto'),
-    passport = require('passport'),
-    jwt = require('jsonwebtoken'),
     config = require('../config/config');
 
 exports.login = function(req, res) {
-  passport.authenticate('local', function(err, user, info) {
-    var token;
-
-    if (err) {
-      return res.status(404).json(err);
-    }
-
+  console.log(req.body);
+  User.findOne({ username: req.body.username }, function(err, user) {
+    if (err) return res.json({
+      success: false,
+      msg: 'Authorization Failed'
+    });
     if (user) {
-      token = user.generateJwt();
-      return res.status(200).json({ success: true, token: token });
+      bcrypt.compare(req.body.password, user.password, function(err, result) {
+        if (err) return res.json({
+          success: false,
+          msg: 'Authorization Failed'
+        });
+        if (result) {
+          const token = user.generateJwt();
+          return res.json({
+            success: true,
+            msg: 'Authorization Success',
+            token: token
+          });
+        } else {
+          return res.json({
+            success: false,
+            msg: 'Authorization Failed'
+          });
+        }
+      });
     } else {
-      return res.status(401).json(info);
+      return res.json({
+        success: false,
+        msg: 'Authorization Failed'
+      });
     }
-
-  })(req, res);
+  });
 };
 
 exports.register = function(req, res) {
-  var user = new User(req.body);
-
-  var salt = crypto.randomBytes(16).toString('hex');
-  var hash = crypto.pbkdf2Sync(user.password, salt, 1000, 64, 'sha512').toString('hex');
-  user.salt = salt;
-  user.password = hash;
-
-  user.save(function(err) {
-    if(err) return res.json({ success: false, msg: err.errmsg });
-    var token;
-    token = user.generateJwt();
-    res.status(200);
-    return res.json({ success: true, msg: 'User registered', token: token });
+  console.log(req.body);
+  bcrypt.hash(req.body.password, 10, function(err, hash) {
+    if (err) {
+      return res.json({
+        success: false,
+        msg: 'Registration Failed'
+      });
+    } else {
+      var user = new User({
+        username: req.body.username,
+        email: req.body.email,
+        password: hash
+      });
+      user.save(function(err) {
+        if (err) return res.json({
+          success: false,
+          msg: 'Registration Failed'
+        });
+        else {
+          User.findOne({ username: user.username }, function(err, user) {
+            if (err) return res.json({
+              success: false,
+              msg: 'Registration Failed'
+            });
+            else {
+              // everything was successful, generate and send back token
+              const token = user.generateJwt();
+              return res.json({
+                success: true,
+                msg: "Authentication Success",
+                token: token
+              });
+            }
+          });
+        }
+      });
+    }
   });
 };

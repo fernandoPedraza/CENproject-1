@@ -58,13 +58,22 @@
 								</div>
 								<div class="col-sm">
 									<input type="text" name="Username" ng-model="login.username"><p ng-if="noLogUsername" class="individual-alert">{{noLogUsername}}</p>
-									<input type="password" name="Password" ng-model="login.password"><p ng-if="noLogPassword" class="individual-alert">{{noLogPassword}}</p>
+									<input id="u-input" type="password" name="Password" ng-model="login.password"><p ng-if="noLogPassword" class="individual-alert">{{noLogPassword}}</p>
+									<script>
+										var input = document.getElementById("u-input");
+										input.addEventListener("keyup", function(event) {
+											if (event.keyCode === 13) {
+											 event.preventDefault();
+											 document.getElementById("login-button").click();
+											}
+										});
+									</script>
 								</div>
 							</div>
 						</form>
 
 						<form style="text-align:center;">
-								<input class="signin-button" type="submit" value="LOGIN" ng-click="loginUser()"/>
+								<input id="login-button" class="signin-button" type="submit" value="LOGIN" ng-click="loginUser()"/>
 						</form>
 						<div style="text-align:center;">
 							<a style="font-size:13px;" href="forgot-pass.html">Forgot password?</a>

@@ -174,12 +174,12 @@ article[data-scribe] {
 	margin:1px 5px 0 45px;
 }
 .search-topic-content .single-tweet div{
-	height:80px;
+	
 	padding:0;
 }
 .search-topic-content .tweet-link {
 	overflow:hidden;
-	height:58px;
+
 	padding:5px 10px 5px 10px;
 	color:black;
 	text-decoration:none;

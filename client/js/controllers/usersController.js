@@ -140,6 +140,7 @@ angular.module('users').controller('UsersController', ['$scope', '$window', 'Use
       };
 
       Users.loginUser(obj).then(function(response) {
+        console.log(response);
         if (response.data.success) {
           $window.location.href = "/";
           $window.localStorage.setItem('token', response.data.token);

@@ -101,3 +101,17 @@ exports.getTrendsByLocation = function(req, res) {
     });
   });
 }
+
+exports.authValidate = function(req, res, next) {
+  try {
+    const decoded = jwt.verify(req.headers.authorization.split(' ')[1], config.secret)
+    req.userData = decoded;
+    next();
+  } catch (err) {
+    return res.json({
+      notAuthorized: true,
+      success: false,
+      msg: 'Authorization Failed'
+    });
+  }
+}

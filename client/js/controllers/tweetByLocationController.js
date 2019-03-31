@@ -17,6 +17,9 @@ angular.module('tweet_by_location').controller('TweetByLocationController', ['$s
       var location = { location: $window.localStorage.getItem('location') };
       $scope.currentLocation = location.location;
       Data.getTweetsByLocation(location).then(function(response) {
+        if (response.data.notAuthorized) {
+          $window.location.href = '/users';
+        }
         if (response.data.success) {
           $scope.currentLocation = response.data.locationFound;
         }
@@ -58,7 +61,6 @@ angular.module('tweet_by_location').controller('TweetByLocationController', ['$s
     }
 
     $scope.logout = function() {
-      console.log('hello')
       $window.localStorage.clear();
       $window.location.href = '/users';
     };

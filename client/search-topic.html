@@ -55,14 +55,10 @@
 						<p class="user-info">{{tweet.user.name}} <span class="user-display-name">@{{tweet.user.screen_name}}</span></p>
 						<div class="row single-tweet">
 							<div class="col-12">
-								<a class="tweet-link" ng-if="tweet.link" href="{{tweet.link}}">{{tweet.full_text}}</a>
-								<p class="tweet-date">{{tweet.created_at}}</p>
+								<p class="">{{tweet.full_text}}</p>
 							</div>
-						</div>
-						<div class="row single-tweet">
-							<div class="col-12">
-								<a class="tweet-link" ng-if="tweet.link" href="{{tweet.link}}">{{tweet.full_text}}</a>
-								<p class="tweet-date">{{tweet.created_at}}</p>
+							<div class="col-12" ng-repeat="extraTweet in tweet.extraTweets">
+								<p class="">{{extraTweet.full_text}}</p>
 							</div>
 						</div>
 					</div>

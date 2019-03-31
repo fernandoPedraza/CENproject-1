@@ -33,10 +33,6 @@ module.exports.init = function() {
     // Serve static files
     app.use(express.static(path.join(__dirname, '../../client')));
 
-    // init passport
-    require('./passport')
-    app.use(passport.initialize());
-
     // Assign routers
     app.use('/api', dataRouter);
     app.use('/auth', userAuthRouter);

@@ -20,6 +20,7 @@ angular.module('tweet_by_location').controller('TweetByLocationController', ['$s
       var location = { location: $window.localStorage.getItem('location') };
       $scope.currentLocation = location.location;
       Data.getTrendsByLocation(location).then(function(response) {
+        console.log(response);
         if (response.data.success && response.data.trending_topics.length > 0) {
           $scope.currentLocation = response.data.location_found;
           $scope.trendsByLocation = []
@@ -52,6 +53,7 @@ angular.module('tweet_by_location').controller('TweetByLocationController', ['$s
           // Instantiate and draw our chart, passing in some options.
           var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
           chart.draw(data, options);
+          
         } else {
           $scope.noResults = true;
         }

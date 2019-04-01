@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html ng-app="topicApp">
   <head>
-	<title>5 Guys</title>
+	<title>TweetApp</title>
 	<link rel="icon" href="http://www.stickpng.com/assets/images/580b57fcd9996e24bc43c53e.png">
 	<link href="styles/style.css" rel="stylesheet" type="text/css"/>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -59,7 +59,7 @@
 								<p class="user-info">Friends: <span style="font-weight:normal">{{tweet.user.friends_count}}</span></p>
 							</div>
 						</div>
-						<p class="user-info">{{tweet.user.name}} <span class="user-display-name">@{{tweet.user.screen_name}}</span></p>
+						<p class="user-info">{{tweet.user.name}} <a class="user-display-name" href="{{tweet.user.profile_link}}">@{{tweet.user.screen_name}}</a></p>
 						<div class="row single-tweet">
 							<div class="col-12">
 								<a class="tweet-link" href="{{tweet.link}}" target="_blank">{{tweet.full_text}}</a>

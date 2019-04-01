@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-		<title>5 Guys</title>
+		<title>TweetApp</title>
 		<link rel="icon" href="http://www.stickpng.com/assets/images/580b57fcd9996e24bc43c53e.png">
 		<link href="styles/style.css" rel="stylesheet" type="text/css"/>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -38,25 +38,53 @@
 
     <div class="container-fluid" ng-controller="DataController">
   		<div class="home-content">
-				<h1>WHAT IN THE WORLD IS TRENDING?</h1>
-				<div id="chart_div"></div>
-					<div class="row" style="margin-top:20px;">
-						<div class="col-sm-5 px-1">
-							<h3 class="font-weight-bold ng-cloak">Top 50 Topics</h3>
-							<div class="row justify-content-md-center" style="width:95%; margin:8px auto auto auto;">
-								<div class="col-4 text-center justify-content-center font-weight-bold" style="border: 10px solid white;" ng-repeat="topic in top50topics">
-									<a class="topic-link justify-content-center ng-cloak" href="javascript:;" ng-click="searchTopic($index)">{{topic.name}}</a>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-7 px-1">
-							<h3 class="font-weight-bold ng-cloak">Tweets</h3>
-							<div class="row" style="padding:0 30px 0 40px;">
-								<div class="col-xl-4 px-2" ng-repeat="tweet in topTweets">
-									<!-- MAKE STYLE CHANGES HERE -->
-									<!-- ALL DATA SHOULD BE IN THE {{tweet}} -->
-
-									<!-- CHECK CONSOLE FOR TWEETS OBJECTS IF YOU NEED TO -->
+  			<h1>WHAT IN THE WORLD IS TRENDING?</h1>
+  				<div id="chart_div"></div>
+    				<div class="row" style="margin-top:20px;">
+    					<div class="col-sm-6 px-1" style="max-width:48%;">
+    						<h3>Top 50 Topics</h3>
+                <div class="row justify-content-md-center" style="width:95%; margin:8px auto auto auto;">
+                  <div class="col-4 text-center justify-content-center topic-tile" ng-class="{isBlack: $index % 2 == 1}" ng-repeat="topic in top50topics">
+                    <a class="topic-link justify-content-center" href="javascript:;" ng-click="searchTopic($index)">{{topic.name}}</a>
+                  </div>
+                </div>
+              </div>
+    					<div class="col-md-6 px-1" style="max-width:49%;">
+    						<h3>Tweets</h3>
+                <div class="row" style="padding:0 0 0 30px;">
+                  <div class="col-12 px-2 tweet-container" ng-repeat="tweet in topTweets">
+										<div class="row" style="height:65px;">
+											<div class="col-2 text-center" style="padding:12px;">
+												<img class="user-image" src="{{tweet.user.profile_image_url}}" alt="profile-picture">
+											</div>
+											<div class="col-lg" style="padding:10px;">
+												<p class="user-info">Followers: <span style="font-weight:normal">{{tweet.user.followers_count}}</span></p>
+												<p class="user-info">Friends: <span style="font-weight:normal">{{tweet.user.friends_count}}</span></p>
+											</div>
+										</div>
+										<p class="user-info">{{tweet.user.name}} <a class="user-display-name" href="{{tweet.user.profile_link}}">@{{tweet.user.screen_name}}</a></p>
+										<div class="row single-tweet">
+											<div class="col-12">
+												<a class="tweet-link" href="{{tweet.link}}" target="_blank">{{tweet.full_text}}</a>
+													<div class="row" style="margin-left:10px;">
+														<div class="col">
+															<p class="tweet-retweets"><span style="font-weight:bold; color:black">{{tweet.retweet_count}}</span> retweets</p>
+														</div>
+														<div class="col">
+															<p class="tweet-likes"><span style="font-weight:bold; color:black">{{tweet.favorite_count}}</span> likes</p>
+														</div>
+														<div class="col-7 justify-content-end" style="margin-right:15px">
+															<p class="tweet-date">{{tweet.created_at}}</p>
+														</div>
+													</div>
+											</div>
+										</div>
+                  </div>
+                </div>
+    					</div>
+  					</div>
+  			</div>
+  		</div>
 								</div>
 							</div>
 						</div>

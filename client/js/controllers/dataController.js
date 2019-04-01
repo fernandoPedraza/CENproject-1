@@ -66,6 +66,9 @@ angular.module('data').controller('DataController', ['$scope', '$window', 'Data'
           }
           for (i = 0; i < max; ++i) {
             tweets[i].extraTweets = []
+            tweets[i].link = 'https://twitter.com/' + tweets[i].user.screen_name + '/status/' + tweets[i].id_str
+            tweets[i].created_at = tweets[i].created_at.replace('+0000', '')
+            tweets[i].user.profile_link = 'https://twitter.com/' + tweets[i].user.screen_name
             if (nameExists(tweets[i].user.screen_name)) {
               updatetopTweets(tweets[i].user.screen_name, tweets[i]);
               max += 1;
@@ -74,7 +77,6 @@ angular.module('data').controller('DataController', ['$scope', '$window', 'Data'
               }
               continue
             }
-            tweets[i].user.profile_link = 'https://twitter.com/' + tweets[i].user.screen_name
             $scope.topTweets.push(tweets[i]);
           }
           // final cleaning
@@ -82,15 +84,14 @@ angular.module('data').controller('DataController', ['$scope', '$window', 'Data'
             var tweet = $scope.topTweets[i]
             var httpsIndex = tweet.full_text.indexOf('https://');
             if (httpsIndex != -1) {
-              $scope.topTweets[i].link = tweet.full_text.substring(httpsIndex,);
+              // $scope.topTweets[i].link = tweet.full_text.substring(httpsIndex,);
               $scope.topTweets[i].full_text = tweet.full_text.substring(0, httpsIndex);
-              tweets[i].full_text = tweets[i].full_text.substring(0, httpsIndex);
             }
             for (j = 0; j < tweet.extraTweets.length; ++j) {
               var extraTweet = tweet.extraTweets[j]
               var httpsIndex = extraTweet.full_text.indexOf('https://');
               if (httpsIndex != -1) {
-                $scope.topTweets[i].extraTweets[j].link = extraTweet.full_text.substring(httpsIndex,);
+                // $scope.topTweets[i].extraTweets[j].link = extraTweet.full_text.substring(httpsIndex,);
                 $scope.topTweets[i].extraTweets[j].full_text = extraTweet.full_text.substring(0, httpsIndex);
               }
             }
@@ -112,7 +113,9 @@ angular.module('data').controller('DataController', ['$scope', '$window', 'Data'
       for (j = 0; j < $scope.topTweets.length; ++j) {
         var name = $scope.topTweets[j].user.screen_name;
         if (name == nameTarget) {
-          $scope.topTweets[j].extraTweets.push(tweet);
+          if ($scope.topTweets[j].extraTweets.length < 2) {
+            $scope.topTweets[j].extraTweets.push(tweet);
+          }
           return;
         }
       }

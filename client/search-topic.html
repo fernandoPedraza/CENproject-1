@@ -55,7 +55,7 @@
 						<p class="user-info">{{tweet.user.name}} <span class="user-display-name">@{{tweet.user.screen_name}}</span></p>
 						<div class="row single-tweet">
 							<div class="col-12">
-								<a class="tweet-link" href="{{tweet.link}}">{{tweet.full_text}}</a>
+								<a class="tweet-link" href="{{tweet.link}}" target="_blank">{{tweet.full_text}}</a>
 								<div class="row" style="margin-left:10px;">
 									<div class="col">
 										<p class="tweet-retweets"><span style="font-weight:bold; color:black">{{tweet.retweet_count}}</span> retweets</p>
@@ -71,7 +71,7 @@
 						</div>
 						<div class="row single-tweet" ng-repeat="extraTweet in tweet.extraTweets">
 							<div class="col-12">
-								<a class="tweet-link" href="{{extraTweet.link}}">{{extraTweet.full_text}}</a>
+								<a class="tweet-link" href="{{extraTweet.link}}" target="_blank">{{extraTweet.full_text}}</a>
 								<div class="row" style="margin-left:10px;">
 									<div class="col">
 										<p class="tweet-retweets"><span style="font-weight:bold; color:black">{{extraTweet.retweet_count}}</span> retweets</p>

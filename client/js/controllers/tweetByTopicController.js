@@ -31,6 +31,9 @@ angular.module('tweet_by_topic').controller('TweetByTopicController', ['$scope',
           }
           for (i = 0; i < max; ++i) {
             tweets[i].extraTweets = []
+            tweets[i].link = 'https://twitter.com/' + tweets[i].user.screen_name + '/status/' + tweets[i].id_str
+            tweets[i].created_at = tweets[i].created_at.replace('+0000', '');
+            tweets[i].user.profile_link = 'https://twitter.com/' + tweets[i].user.screen_name
             if (nameExists(tweets[i].user.screen_name)) {
               updatetweetsByTopic(tweets[i].user.screen_name, tweets[i]);
               max += 1;
@@ -46,15 +49,14 @@ angular.module('tweet_by_topic').controller('TweetByTopicController', ['$scope',
             var tweet = $scope.tweetsByTopic[i]
             var httpsIndex = tweet.full_text.indexOf('https://');
             if (httpsIndex != -1) {
-              $scope.tweetsByTopic[i].link = tweet.full_text.substring(httpsIndex,);
+              // $scope.tweetsByTopic[i].link = tweet.full_text.substring(httpsIndex,);
               $scope.tweetsByTopic[i].full_text = tweet.full_text.substring(0, httpsIndex);
-              tweets[i].full_text = tweets[i].full_text.substring(0, httpsIndex);
             }
             for (j = 0; j < tweet.extraTweets.length; ++j) {
               var extraTweet = tweet.extraTweets[j]
               var httpsIndex = extraTweet.full_text.indexOf('https://');
               if (httpsIndex != -1) {
-                $scope.tweetsByTopic[i].extraTweets[j].link = extraTweet.full_text.substring(httpsIndex,);
+                // $scope.tweetsByTopic[i].extraTweets[j].link = extraTweet.full_text.substring(httpsIndex,);
                 $scope.tweetsByTopic[i].extraTweets[j].full_text = extraTweet.full_text.substring(0, httpsIndex);
               }
             }
@@ -76,7 +78,9 @@ angular.module('tweet_by_topic').controller('TweetByTopicController', ['$scope',
       for (j = 0; j < $scope.tweetsByTopic.length; ++j) {
         var name = $scope.tweetsByTopic[j].user.screen_name;
         if (name == nameTarget) {
-          $scope.tweetsByTopic[j].extraTweets.push(tweet);
+          if ($scope.tweetsByTopic[j].extraTweets.length < 2) {
+            $scope.tweetsByTopic[j].extraTweets.push(tweet);
+          }
           return;
         }
       }

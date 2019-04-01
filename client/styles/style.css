@@ -126,25 +126,85 @@ article[data-scribe] {
 .home-content .col-md-7 {
 	border-left: gray solid .5px;
 }
-.home-content .row .text-center {
+.home-content .topic-tile {
+	background-color:#cae7ff;
+	border:2px solid white;
 	display:flex;
 	align-items:center;
-	height:46px;
+	height:55px;
 	word-wrap:break-word;
 	padding:0;
 }
-.home-content .row .text-center:hover {background-color:#b0d8fa;}
+.home-content .topic-tile:hover a {background-color:#edf7ff;}
+
 .home-content .topic-link {
-	display:flex;
-	align-items:center;
 	height:100%;
 	width:100%;
 	color:black;
 	text-decoration:none;
 }
 .home-content .isBlack a {
-	color:#4999ff;
+	background-color:#1da1f2;
 }
+.home-content .tweet-box {
+	padding-bottom:10px;
+	background-color: white;
+	border: 1px solid #75c7ff;
+	margin:5px;
+}
+.home-content .tweet-container {
+	border:1px solid #75c7ff;
+	margin-bottom:7px;
+	padding-bottom:7px;
+}
+.home-content .tweet-box img.user-image {
+	border-radius:50%;
+}
+.home-content p.user-info {
+	font-weight:bold;
+	margin:0 0 5px 0;
+}
+.home-content .user-display-name {
+	color:#888787;
+	font-weight:normal;
+}
+.home-content .single-tweet {
+	border:1px solid #f0efef;
+	padding:0;
+	margin:1px 5px 0 45px;
+}
+.home-content .single-tweet div{
+	padding:0;
+}
+.home-content .tweet-link {
+	overflow:hidden;
+	padding:5px 10px 5px 10px;
+	color:black;
+	text-decoration:none;
+	display:block;
+	width:100%;
+	margin-bottom:3px;
+}
+.home-content .tweet-date{
+	margin:0 10px 0 0;
+	text-align:right;
+	font-size:10px;
+	color:#888787;
+}
+.home-content .tweet-retweets{
+	margin:0 10px 0 0;
+	text-align:left;
+	font-size:10px;
+	color:#888787;
+}
+.home-content .tweet-likes{
+	margin:0 10px 0 0;
+	text-align:left;
+	font-size:10px;
+	color:#888787;
+}
+.home-content .single-tweet:hover {background-color:#ebf9ff;}
+
 /*---------------------- Search by Topic ------------------------*/
 .searchbar-container {
 	margin:auto;
@@ -174,7 +234,6 @@ article[data-scribe] {
 	margin:1px 5px 0 45px;
 }
 .search-topic-content .single-tweet div{
-	
 	padding:0;
 }
 .search-topic-content .tweet-link {
@@ -199,25 +258,17 @@ article[data-scribe] {
 	font-size:10px;
 	color:#888787;
 }
-.search-topic-content .tweet-likes{
+.search-topic-content .tweet-likes {
 	margin:0 10px 0 0;
 	text-align:left;
 	font-size:10px;
 	color:#888787;
 }
-.search-topic-content .view-button {
-	padding:0;
-	background-color:#75c7ff;
-	max-width:none;
-}
-.search-topic-content .view-button a {
-	text-decoration:none;
-	height:100%;
-	padding:0 15px 0 15px;
-	display:flex;
-	align-items:center;
-}
 .search-topic-content .single-tweet:hover {background-color:#ebf9ff;}
+
+/*--------------------Search by Location--------------------*/
+
+
 
 /*----------------------- Sign In ----------------------*/
 .header .login-title {

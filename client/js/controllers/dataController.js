@@ -49,7 +49,6 @@ angular.module('data').controller('DataController', ['$scope', '$window', 'Data'
       chart.draw(data, options);
     });
 
-    $scope.topTweets = []
     Data.getTopTweets().then(function(response) {
       if (response.data.notAuthorized) {
           $window.location.href = '/users';

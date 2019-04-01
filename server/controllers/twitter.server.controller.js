@@ -60,6 +60,7 @@ exports.getTweetsByTopic = function(req, res) {
   })
 }
 
+// currently not in use
 exports.getTweetsByLocation = function(req, res) {
   var location = req.body.location;
   // Using callback
@@ -85,6 +86,7 @@ exports.getTrendsByLocation = function(req, res) {
     if (err) return res.json({ success: false, msg: 'Invalid location: ' +err });
     var data = response[0];
     if (!data) return res.json({ success: false, msg: 'No data for this location: ' + location  }); 
+    var formattedAddress = data.formattedAddress;
     var lat = data.latitude.toString();
     var long = data.longitude.toString();
     var geo = lat + ',' + long + ',1mi';
@@ -92,7 +94,7 @@ exports.getTrendsByLocation = function(req, res) {
       var woeid = data[0].woeid;
       T.get('trends/place', { id: woeid }, function(err, data, response) {
         if (err) return res.json({ success: false, msg: 'Failed to get trends: ' +err });
-        return res.json({ success: true, trending_topics: data[0].trends });
+        return res.json({ success: true, trending_topics: data[0].trends, location_found: formattedAddress });
       });
     });
   });

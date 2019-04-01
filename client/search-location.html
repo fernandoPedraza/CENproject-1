@@ -48,7 +48,7 @@
 		</div>
 
 		<div class="container">
-			<h3 class="text-center" ng-if="currentLocation && (tweetsByLocation || trendsByLocation)">Showing results for: "{{currentLocation.city}}, {{currentLocation.level1long}}"</h3>
+			<h3 class="text-center" ng-if="currentLocation && (tweetsByLocation || trendsByLocation)">Showing results for: "{{currentLocation}}"</h3>
 			<p class="text-center mt-2" ng-if="currentLocation && (tweetsByLocation || trendsByLocation)">Not what you were expecting? Try to be more specific</p>
 			<div class="text-center font-weight-bold mt-5" style="color: red;" ng-if="currentLocation && !tweetsByLocation && !trendsByLocation">No results for "{{currentLocation}}" please try again</div>
 		</div>

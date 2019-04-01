@@ -5,7 +5,6 @@ const mongoose = require('mongoose'),
     config = require('../config/config');
 
 exports.login = function(req, res) {
-  console.log(req.body);
   User.findOne({ username: req.body.username }, function(err, user) {
     if (err) return res.json({
       success: false,
@@ -41,7 +40,6 @@ exports.login = function(req, res) {
 };
 
 exports.register = function(req, res) {
-  console.log(req.body);
   bcrypt.hash(req.body.password, 10, function(err, hash) {
     if (err) {
       return res.json({

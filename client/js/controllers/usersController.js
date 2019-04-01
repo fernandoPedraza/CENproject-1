@@ -1,6 +1,7 @@
 angular.module('users').controller('UsersController', ['$scope', '$window', 'Users',
   function($scope, $window, Users) {
-    $scope.flashMessage = undefined;
+    $scope.flashMessageRegister = undefined;
+    $scope.flashMessageLogin = undefined;
     $scope.noUsername = undefined;
     $scope.noPassword = undefined;
     $scope.noEmail = undefined;
@@ -98,16 +99,14 @@ angular.module('users').controller('UsersController', ['$scope', '$window', 'Use
             $window.localStorage.setItem('token', response.data.token);
           } else {
             var errmsg = response.data.msg;
-            if (errmsg.includes("$username")) {
-              $scope.flashMessage = "Registration failed, this username is taken, please try again"
-            } else if (errmsg.includes("$email")) {
-              $scope.flashMessage = "Registration failed, this email has already been used, please try again"
-            } else {
-              $scope.flashMessage = "Registration Failed"
-            }
+            // if (errmsg.includes("$username")) {
+            //   $scope.flashMessageRegister = "Registration failed, this username is taken, please try again"
+            // } else if (errmsg.includes("$email")) {
+            //   $scope.flashMessageRegister = "Registration failed, this email has already been used, please try again"
+            $scope.flashMessageRegister = "Registration failed";
           }
         }, function(error) {
-            if (error) { console.log('Unable to add listing:', error);}
+            if (error) { console.log('Unable to add listing:', error); }
         });
     };
 
@@ -140,12 +139,12 @@ angular.module('users').controller('UsersController', ['$scope', '$window', 'Use
       };
 
       Users.loginUser(obj).then(function(response) {
-        console.log(response);
+        console.log(response.data.success);
         if (response.data.success) {
           $window.location.href = "/";
           $window.localStorage.setItem('token', response.data.token);
         } else {
-          $scope.flashMessage = "Login Failed: " + response.data.msg;
+          $scope.flashMessageLogin = "Login failed"; 
         }
       }, function(error) {
           console.log('Unable to login:', error);

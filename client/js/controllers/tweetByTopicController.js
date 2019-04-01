@@ -39,6 +39,7 @@ angular.module('tweet_by_topic').controller('TweetByTopicController', ['$scope',
               }
               continue
             }
+            tweets[i].user.profile_link = 'https://twitter.com/' + tweets[i].user.screen_name
             $scope.tweetsByTopic.push(tweets[i]);
           }
           // final cleaning

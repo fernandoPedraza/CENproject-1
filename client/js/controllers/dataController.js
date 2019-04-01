@@ -51,15 +51,72 @@ angular.module('data').controller('DataController', ['$scope', '$window', 'Data'
 
     $scope.topTweets = []
     Data.getTopTweets().then(function(response) {
-      for (var i = 0; i < response.data.tweets.length; i++) {
-        var screen_name = response.data.tweets[i].user.screen_name;
-        var id = response.data.tweets[i].id_str;
-        var url = { url: 'https://twitter.com/' + screen_name + '/status/' + id };
-        Data.getEmbeddedTweet(url).then(function(response) {
-          $scope.topTweets.push(response.data.embedded_tweet.html);
-        });
-      }
+      if (response.data.notAuthorized) {
+          $window.location.href = '/users';
+        }
+        if (response.data.success && response.data.tweets.length > 0) {
+          $scope.topTweets = [];
+          var tweets = response.data.tweets;
+          console.log(tweets);
+          var max;
+          if (tweets.length < 9) {
+            max = tweets.length;
+          } else {
+            max = 9;
+          }
+          for (i = 0; i < max; ++i) {
+            tweets[i].extraTweets = []
+            if (nameExists(tweets[i].user.screen_name)) {
+              updatetopTweets(tweets[i].user.screen_name, tweets[i]);
+              max += 1;
+              if (max > tweets.length) {
+                break;
+              }
+              continue
+            }
+            tweets[i].user.profile_link = 'https://twitter.com/' + tweets[i].user.screen_name
+            $scope.topTweets.push(tweets[i]);
+          }
+          // final cleaning
+          for (i = 0; i < $scope.topTweets.length; ++i) {
+            var tweet = $scope.topTweets[i]
+            var httpsIndex = tweet.full_text.indexOf('https://');
+            if (httpsIndex != -1) {
+              $scope.topTweets[i].link = tweet.full_text.substring(httpsIndex,);
+              $scope.topTweets[i].full_text = tweet.full_text.substring(0, httpsIndex);
+              tweets[i].full_text = tweets[i].full_text.substring(0, httpsIndex);
+            }
+            for (j = 0; j < tweet.extraTweets.length; ++j) {
+              var extraTweet = tweet.extraTweets[j]
+              var httpsIndex = extraTweet.full_text.indexOf('https://');
+              if (httpsIndex != -1) {
+                $scope.topTweets[i].extraTweets[j].link = extraTweet.full_text.substring(httpsIndex,);
+                $scope.topTweets[i].extraTweets[j].full_text = extraTweet.full_text.substring(0, httpsIndex);
+              }
+            }
+          }
+        }
     });
+
+    var nameExists = function(screen_name) {
+      for (j = 0; j < $scope.topTweets.length; ++j) {
+        var tweet = $scope.topTweets[j];
+        if (tweet.user.screen_name == screen_name) {
+          return true;
+        }
+      }
+      return false;
+    }
+
+    var updatetopTweets = function(nameTarget, tweet) {
+      for (j = 0; j < $scope.topTweets.length; ++j) {
+        var name = $scope.topTweets[j].user.screen_name;
+        if (name == nameTarget) {
+          $scope.topTweets[j].extraTweets.push(tweet);
+          return;
+        }
+      }
+    }
 
     $scope.logout = function() {
       $window.localStorage.clear();

@@ -35,20 +35,21 @@
   				<div id="chart_div"></div>
     				<div class="row" style="margin-top:20px;">
     					<div class="col-sm-5 px-1">
-    						<h3>Top 50 Topics</h3>
+    						<h3 class="font-weight-bold">Top 50 Topics</h3>
                 <div class="row justify-content-md-center" style="width:95%; margin:8px auto auto auto;">
-                  <div class="col-4 text-center justify-content-center" ng-class="{isBlack: $index % 2 == 1}" ng-repeat="topic in top50topics">
+                  <div class="col-4 text-center justify-content-center font-weight-bold" style="border: 10px solid white;" ng-repeat="topic in top50topics">
                     <a class="topic-link justify-content-center" href="javascript:;" ng-click="searchTopic($index)">{{topic.name}}</a>
                   </div>
                 </div>
               </div>
     					<div class="col-md-7 px-1">
-    						<h3>Tweets</h3>
+    						<h3 class="font-weight-bold">Tweets</h3>
                 <div class="row" style="padding:0 30px 0 40px;">
                   <div class="col-xl-4 px-2" ng-repeat="tweet in topTweets">
-                    <div ng-bind-html="tweet" class="">
-                      <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-                    </div>
+										<!-- MAKE STYLE CHANGES HERE -->
+										<!-- ALL DATA SHOULD BE IN THE {{tweet}} -->
+
+										<!-- CHECK CONSOLE FOR TWEETS OBJECTS IF YOU NEED TO -->
                   </div>
                 </div>
     					</div>

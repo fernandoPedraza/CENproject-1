@@ -8,7 +8,7 @@ google.charts.setOnLoadCallback(function() {
 angular.module('tweet_by_location').controller('TweetByLocationController', ['$scope', '$window', 'Data',
   function($scope, $window, Data) {
     $scope.currentLocation = undefined;
-    
+
     if (!$window.localStorage.getItem('token')) {
       $window.location.href = '/users';
     }
@@ -34,7 +34,7 @@ angular.module('tweet_by_location').controller('TweetByLocationController', ['$s
           $scope.tweetsByLocation = [];
           var tweets = response.data.tweets;
           for (i = 0; i < tweets.length; ++i) {
-            // removing sublinks ... might not be necessary 
+            // removing sublinks ... might not be necessary
             var httpsIndex = tweets[i].full_text.indexOf('https://');
             if (httpsIndex != -1) {
               tweets[i].link = tweets[i].full_text.substring(httpsIndex,);
@@ -50,7 +50,12 @@ angular.module('tweet_by_location').controller('TweetByLocationController', ['$s
           var trends = response.data.trending_topics;
            // Create the data table.
           var rows = [['Name', 'Volume', { role: 'style' }]];
-          var max = 20;
+          var max;
+          if (trends.length < 9) {
+            max = trends.length;
+          } else {
+            max = 9;
+          }
           for (var i = 0; i < max; i++) {
             if (trends[i].tweet_volume <= 0) {
               max += 1;
@@ -77,12 +82,12 @@ angular.module('tweet_by_location').controller('TweetByLocationController', ['$s
           }
         }
       });
-    } 
+    }
 
     $scope.searchForLocation = function() {
       var location = $scope.locationQuery;
       $window.localStorage.setItem('location', location);
-    } 
+    }
 
     $scope.searchTopic = function(index) {
       var topic = $scope.trendsByLocation[index];

@@ -193,6 +193,18 @@ article[data-scribe] {
 	font-size:10px;
 	color:#888787;
 }
+.search-topic-content .tweet-retweets{
+	margin:0 10px 0 0;
+	text-align:left;
+	font-size:10px;
+	color:#888787;
+}
+.search-topic-content .tweet-likes{
+	margin:0 10px 0 0;
+	text-align:left;
+	font-size:10px;
+	color:#888787;
+}
 .search-topic-content .view-button {
 	padding:0;
 	background-color:#75c7ff;

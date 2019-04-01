@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
+		<title>5 Guys</title>
+		<link rel="icon" href="http://www.stickpng.com/assets/images/580b57fcd9996e24bc43c53e.png">
 		<link href="styles/style.css" rel="stylesheet" type="text/css"/>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 		<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -48,7 +50,7 @@
 		</div>
 
 		<div class="container">
-			<h3 class="text-center" ng-if="currentLocation && (tweetsByLocation || trendsByLocation)">Showing results for: "{{currentLocation}}"</h3>
+			<h3 class="text-center" ng-show="currentLocation && (tweetsByLocation || trendsByLocation)">Showing results for: "{{currentLocation}}"</h3>
 			<p class="text-center mt-2" ng-if="currentLocation && (tweetsByLocation || trendsByLocation)">Not what you were expecting? Try to be more specific</p>
 			<div class="text-center font-weight-bold mt-5" style="color: red;" ng-if="currentLocation && !tweetsByLocation && !trendsByLocation">No results for "{{currentLocation}}" please try again</div>
 		</div>

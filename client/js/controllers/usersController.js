@@ -103,16 +103,11 @@ angular.module('users').controller('UsersController', ['$scope', '$window', 'Use
       };
 
         Users.registerUser(obj).then(function(response) {
-          console.log(response);
           if (response.data.success) {
             $window.location.href = "/";
             $window.localStorage.setItem('token', response.data.token);
+            $window.localStorage.setItem('username', response.data.username);
           } else {
-            var errmsg = response.data.msg;
-            // if (errmsg.includes("$username")) {
-            //   $scope.flashMessageRegister = "Registration failed, this username is taken, please try again"
-            // } else if (errmsg.includes("$email")) {
-            //   $scope.flashMessageRegister = "Registration failed, this email has already been used, please try again"
             $scope.flashMessageRegister = "Registration failed";
           }
         }, function(error) {
@@ -149,10 +144,10 @@ angular.module('users').controller('UsersController', ['$scope', '$window', 'Use
       };
 
       Users.loginUser(obj).then(function(response) {
-        console.log(response.data.success);
         if (response.data.success) {
           $window.location.href = "/";
           $window.localStorage.setItem('token', response.data.token);
+          $window.localStorage.setItem('username', response.data.username);
         } else {
           $scope.flashMessageLogin = "Login failed"; 
         }

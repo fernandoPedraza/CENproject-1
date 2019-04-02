@@ -21,7 +21,8 @@ exports.login = function(req, res) {
           return res.json({
             success: true,
             msg: 'Authorization Success',
-            token: token
+            token: token,
+            username: user.username
           });
         } else {
           return res.json({
@@ -69,7 +70,8 @@ exports.register = function(req, res) {
               return res.json({
                 success: true,
                 msg: "Authentication Success",
-                token: token
+                token: token,
+                username: user.username
               });
             }
           });

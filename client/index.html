@@ -38,6 +38,7 @@
 
     <div class="container-fluid" ng-controller="DataController">
   		<div class="home-content">
+				<div style="width: 50%;" class="alert alert-success ng-cloak text-center mt-2 font-weight-bold mx-auto" ng-if="welcomeMessage" role="alert">{{welcomeMessage}}</div>
   			<h1>WHAT IN THE WORLD IS TRENDING?</h1>
   				<div id="chart_div"></div>
     				<div class="row" style="margin-top:20px;">

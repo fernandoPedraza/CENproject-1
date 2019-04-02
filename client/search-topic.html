@@ -2,7 +2,7 @@
 <html ng-app="topicApp">
   <head>
 	<title>TweetApp</title>
-	<link rel="icon" href="http://www.stickpng.com/assets/images/580b57fcd9996e24bc43c53e.png">
+	<link rel="icon" href="images/favicon.png">
 	<link href="styles/style.css" rel="stylesheet" type="text/css"/>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -45,7 +45,7 @@
 				</div>
 			</div>
 			<div>
-				<h3 class="text-center ng-cloak" ng-if="currentTopic && tweetsByTopic">Showing results for: "{{currentTopic}}"</h3>
+				<h3 class="text-center ng-cloak" ng-if="currentTopic && tweetsByTopic">Showing results for: {{currentTopic}}</h3>
 				<h3 class="text-center font-weight-bold mt-5 ng-cloak" style="color: red;" ng-if="noResults">No results for "{{currentTopic}}" please try again</h3>
 				<div ng-if="tweetsByTopic" class="row mt-3 justify-content-md-center">
 				
@@ -54,7 +54,7 @@
 							<div class="col-2 text-center" style="padding:12px;">
 								<img class="user-image" src="{{tweet.user.profile_image_url}}" alt="profile-picture">
 							</div>
-							<div class="col-lg" style="padding:10px 10px 0 10px;">
+							<div class="col-lg" style="padding:10px;">
 								<p class="user-info">Followers: <span style="font-weight:normal">{{tweet.user.followers_count}}</span></p>
 								<p class="user-info">Friends: <span style="font-weight:normal">{{tweet.user.friends_count}}</span></p>
 							</div>

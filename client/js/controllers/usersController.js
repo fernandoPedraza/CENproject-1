@@ -15,8 +15,6 @@ angular.module('users').controller('UsersController', ['$scope', '$window', 'Use
     $scope.registerUser = function() {
       $scope.flashMessageRegister = undefined;
       $scope.flashMessageLogin = undefined;
-      $scope.noLogUsername = undefined;
-      $scope.noLogPassword = undefined;
       /**TODO
       *Save the article using the Listings factory. If the object is successfully
       saved redirect back to the list page. Otherwise, display the error
@@ -122,13 +120,6 @@ angular.module('users').controller('UsersController', ['$scope', '$window', 'Use
     $scope.loginUser = function() {
       $scope.flashMessageRegister = undefined;
       $scope.flashMessageLogin = undefined;
-      $scope.noUsername = undefined;
-      $scope.noPassword = undefined;
-      $scope.noEmail = undefined;
-      $scope.noConfirmEmail = undefined;
-      $scope.noConfirmPassword = undefined;
-      $scope.noPasswordMatch = undefined;
-      $scope.noEmailMatch = undefined;
       $scope.noLogUsername = 'This field is required'
       $scope.noLogPassword = 'This field is required'
 

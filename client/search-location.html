@@ -54,7 +54,7 @@
 					<div id="chart_div"></div>
 			</div>
 			<div class="container" style="margin-bottom:20px;">
-				<h4 ng-if="trendsByLocation" class="text-center mt-3 ng-cloak">Trends in {{currentLocation}}</h4>
+				<h4 ng-if="trendsByLocation" class="text-center mt-3 ng-cloak">Trends</h4>
 				<div ng-if="trendsByLocation" class="row mt-2 ng-cloak">
 					<div class="col-4 justify-contents-center topic-tile" ng-class="{isBlack: $index % 2 == 1}" ng-repeat="trend in trendsByLocation">
 						<a class="topic-link" href="javascript:;" ng-click="searchTopic($index)">

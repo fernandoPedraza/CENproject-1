@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
-		<title>5 Guys</title>
-		<link rel="icon" href="http://www.stickpng.com/assets/images/580b57fcd9996e24bc43c53e.png">
-		<link href="styles/style.css" rel="stylesheet" type="text/css"/>
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<title>TweetApp</title>
+	<link rel="icon" href="http://www.stickpng.com/assets/images/580b57fcd9996e24bc43c53e.png">
+	<link href="styles/style.css" rel="stylesheet" type="text/css"/>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   </head>
 
 	<body style="background-image:url(images/biglogo.png);" ng-app="usersApp">
@@ -22,21 +22,21 @@
 							<div class="row">
 								<div class="col">
 									<h4>CREATE A NEW ACCOUNT</h4>
-									<p class="individual-alert text-center" ng-if="flashMessageRegister">{{flashMessageRegister}}</p>
+									<p class="individual-alert ng-cloak text-center" ng-if="flashMessageRegister">{{flashMessageRegister}}</p>
 								</div>
 							</div>
 							<div class="row">
 								<div class="col">
 									<p>Username<span style="color:red;">*</span></p>
-									<input type="text" name="Username" ng-model="register.username"><p ng-if="noUsername" class="individual-alert">{{noUsername}}</p>
+									<input type="text" name="Username" ng-model="register.username"><p ng-if="noUsername" class="individual-alert ng-cloak">{{noUsername}}</p>
 									<p>Password<span style="color:red;">*</span></p>
-									<input type="password" name="Password" ng-model="register.password"><p ng-if="noPassword" class="individual-alert">{{noPassword}}</p><p ng-if="noPasswordMatch" class="individual-alert">{{noPasswordMatch}}</p>
+									<input type="password" name="Password" ng-model="register.password"><p ng-if="noPassword" class="individual-alert ng-cloak">{{noPassword}}</p><p ng-if="noPasswordMatch" class="individual-alert ng-cloak">{{noPasswordMatch}}</p>
 									<p>Confirm Password<span style="color:red;">*</span></p>
-									<input type="password" name="Confirm-Password" ng-model="register.confpassword"><p ng-if="noConfirmPassword" class="individual-alert">{{noConfirmPassword}}</p><p ng-if="noPasswordMatch" class="individual-alert">{{noPasswordMatch}}</p>
+									<input type="password" name="Confirm-Password" ng-model="register.confpassword"><p ng-if="noConfirmPassword" class="individual-alert ng-cloak">{{noConfirmPassword}}</p><p ng-if="noPasswordMatch" class="individual-alert ng-cloak">{{noPasswordMatch}}</p>
 									<p>Email<span style="color:red;">*</span></p>
-									<input type="text" name="Email" ng-model="register.email"><p ng-if="noEmail" class="individual-alert">{{noEmail}}</p><p ng-if="noEmailMatch" class="individual-alert">{{noEmailMatch}}</p>
+									<input type="text" name="Email" ng-model="register.email"><p ng-if="noEmail" class="individual-alert ng-cloak">{{noEmail}}</p><p ng-if="noEmailMatch" class="individual-alert ng-cloak">{{noEmailMatch}}</p><p class="individual-alert ng-cloak" ng-if="!noEmailMatch && notValidEmail">{{notValidEmail}}</p>
 									<p>Confirm Email<span style="color:red;">*</span></p>
-									<input type="text" name="Confirm-Email" ng-model="register.confemail"><p ng-if="noConfirmEmail" class="individual-alert">{{noConfirmEmail}}</p><p ng-if="noEmailMatch" class="individual-alert">{{noEmailMatch}}</p>
+									<input type="text" name="Confirm-Email" ng-model="register.confemail"><p ng-if="noConfirmEmail" class="individual-alert ng-cloak">{{noConfirmEmail}}</p><p ng-if="noEmailMatch" class="individual-alert ng-cloak">{{noEmailMatch}}</p><p class="individual-alert ng-cloak" ng-if="!noEmailMatch && notValidEmail">{{notValidEmail}}</p>
 								</div>
 							</div>
 						</form>
@@ -52,7 +52,7 @@
 							<div class="row">
 								<div class="col">
 									<h4>USER SIGN-IN</h4>
-									<p class="individual-alert text-center" ng-if="flashMessageLogin">{{flashMessageLogin}}</p>
+									<p class="individual-alert ng-cloak text-center" ng-if="flashMessageLogin">{{flashMessageLogin}}</p>
 								</div>
 							</div>
 							<div class="row">
@@ -61,8 +61,8 @@
 									<p>Password:</p>
 								</div>
 								<div class="col-sm">
-									<input type="text" name="Username" ng-model="login.username"><p ng-if="noLogUsername" class="individual-alert">{{noLogUsername}}</p>
-									<input id="u-input" type="password" name="Password" ng-model="login.password"><p ng-if="noLogPassword" class="individual-alert">{{noLogPassword}}</p>
+									<input type="text" name="Username" ng-model="login.username"><p ng-if="noLogUsername" class="individual-alert ng-cloak">{{noLogUsername}}</p>
+									<input id="u-input" type="password" name="Password" ng-model="login.password"><p ng-if="noLogPassword" class="individual-alert ng-cloak">{{noLogPassword}}</p>
 									<script>
 										var input = document.getElementById("u-input");
 										input.addEventListener("keyup", function(event) {

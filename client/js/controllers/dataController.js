@@ -38,10 +38,10 @@ angular.module('data').controller('DataController', ['$scope', '$window', 'Data'
       var data = google.visualization.arrayToDataTable(rows);
 
       // Set chart options
-      var options = {'title':'Tweet volume for trending topics',
-                      'width':$window.innerWidth - 50,
-                      'height':400,
-                      'legend':{'position':'none'}
+      var options = { titlePosition: 'none',
+                      width:$window.innerWidth - 50,
+                      height:400,
+                      legend:{'position':'none'}
                     };
 
       // Instantiate and draw our chart, passing in some options.
@@ -49,7 +49,6 @@ angular.module('data').controller('DataController', ['$scope', '$window', 'Data'
       chart.draw(data, options);
     });
 
-    $scope.topTweets = []
     Data.getTopTweets().then(function(response) {
       if (response.data.notAuthorized) {
           $window.location.href = '/users';

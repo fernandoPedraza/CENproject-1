@@ -7,7 +7,6 @@ google.charts.setOnLoadCallback(function() {
 
 angular.module('tweet_by_location').controller('TweetByLocationController', ['$scope', '$window', 'Data',
   function($scope, $window, Data) {
-    $scope.currentLocation = undefined;
 
     if (!$window.localStorage.getItem('token')) {
       $window.location.href = '/users';
@@ -17,7 +16,6 @@ angular.module('tweet_by_location').controller('TweetByLocationController', ['$s
       $window.localStorage.removeItem('topic');
     }
 
-    $scope.trendsByLocation = undefined;
     if ($window.localStorage.getItem('location')) {
       var location = { location: $window.localStorage.getItem('location') };
       $scope.currentLocation = location.location;
@@ -46,18 +44,21 @@ angular.module('tweet_by_location').controller('TweetByLocationController', ['$s
           var data = google.visualization.arrayToDataTable(rows);
 
           // Set chart options
-          var options = {'title':'Tweet volume for trending topics',
-                          'width':$window.innerWidth - 50,
-                          'height':400,
-                          'legend':{'position':'none'}
+          var options = { titlePosition:'none',
+                          width:$window.innerWidth - 50,
+                          height:400,
+                          legend:{'position':'none'}
                         };
 
           // Instantiate and draw our chart, passing in some options.
           var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
           chart.draw(data, options);
+          
+        } else {
+          $scope.noResults = true;
         }
       });
-    }
+    } 
 
     $scope.searchForLocation = function() {
       var location = $scope.locationQuery;

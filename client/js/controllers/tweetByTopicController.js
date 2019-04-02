@@ -61,6 +61,8 @@ angular.module('tweet_by_topic').controller('TweetByTopicController', ['$scope',
               }
             }
           }
+        } else {
+          $scope.noResults = true;
         }
       })
     }

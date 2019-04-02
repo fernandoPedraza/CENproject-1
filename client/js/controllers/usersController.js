@@ -17,13 +17,14 @@ angular.module('users').controller('UsersController', ['$scope', '$window', 'Use
       *Save the article using the Listings factory. If the object is successfully
       saved redirect back to the list page. Otherwise, display the error
      */
-      $scope.noUsername = 'This field is required'
-      $scope.noPassword = 'This field is required'
-      $scope.noConfirmPassword = 'This field is required'
-      $scope.noEmail = 'This field is required'
-      $scope.noConfirmEmail = 'This field is required'
-      $scope.noPasswordMatch = 'Passwords must match'
-      $scope.noEmailMatch = 'Emails must match'
+      $scope.noUsername = 'This field is required';
+      $scope.noPassword = 'This field is required';
+      $scope.noConfirmPassword = 'This field is required';
+      $scope.noEmail = 'This field is required';
+      $scope.noConfirmEmail = 'This field is required';
+      $scope.noPasswordMatch = 'Passwords must match';
+      $scope.noEmailMatch = 'Emails must match';
+      $scope.notValidEmail = 'Please enter a valid email address';
 
       if ($scope.register == undefined) {
         $scope.noPasswordMatch = undefined;
@@ -57,10 +58,14 @@ angular.module('users').controller('UsersController', ['$scope', '$window', 'Use
       // Check for matching emails and passwords
       var emailsMatch = false;
       var passwordsMatch = false;
+      var validEmail = false;
 
       if (emailEntered && confirmEmailEntered) {
         if ($scope.register.confemail == $scope.register.email) {
           emailsMatch = true;
+          if (validateEmail($scope.register.email)) {
+            validEmail = true;
+          } else allLoginInfoEntered = false;
         } else {
           allLoginInfoEntered = false;
         }
@@ -73,9 +78,14 @@ angular.module('users').controller('UsersController', ['$scope', '$window', 'Use
           allLoginInfoEntered = false;
         }
       } else passwordsMatch = true;
-
+      
+      
       if (emailsMatch) {
         $scope.noEmailMatch = undefined;
+      }
+
+      if (validEmail) {
+        $scope.notValidEmail = undefined;
       }
 
       if (passwordsMatch) {
@@ -150,5 +160,10 @@ angular.module('users').controller('UsersController', ['$scope', '$window', 'Use
           console.log('Unable to login:', error);
       });
     };
+
+    var validateEmail = function(email) {
+      var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return re.test(String(email).toLowerCase());
+    }
   }
 ]);

@@ -1,11 +1,18 @@
 <!DOCTYPE html>
 <html ng-app="topicApp">
   <head>
-		<title>5 Guys</title>
-		<link rel="icon" href="http://www.stickpng.com/assets/images/580b57fcd9996e24bc43c53e.png">
-		<link href="styles/style.css" rel="stylesheet" type="text/css"/>
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<title>TweetApp</title>
+	<link rel="icon" href="http://www.stickpng.com/assets/images/580b57fcd9996e24bc43c53e.png">
+	<link href="styles/style.css" rel="stylesheet" type="text/css"/>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://code.angularjs.org/1.4.3/angular.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular-sanitize.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/factories/tweetByTopicFactory.js"></script>
+    <script src="js/controllers/tweetByTopicController.js"></script>
   </head>
 
   <body ng-controller="TweetByTopicController">
@@ -20,9 +27,7 @@
 					<ul class="navigation">
 						<li><a href="/">Home</a></li>
 						<li class="selected"><a href="searchbytopic">Search by Topic</a></li>
-						<li>
-							<a href="searchbylocation">Trends by Location</a>
-						</li>
+						<li><a href="searchbylocation">Trends by Location</a></li>
 					</ul>
 					<ul class="nav-logout">
 						<li> <a href="javascript:;" ng-click="logout()">Log out</a></li>
@@ -40,8 +45,8 @@
 				</div>
 			</div>
 			<div>
-				<h3 class="text-center" ng-if="currentTopic">Showing results for: "{{currentTopic}}"</h3>
-				<div class="text-center font-weight-bold mt-5" style="color: red;" ng-if="currentTopic && !tweetsByTopic">No results for "{{currentTopic}}" please try again</div>
+				<h3 class="text-center ng-cloak" ng-if="currentTopic && tweetsByTopic">Showing results for: "{{currentTopic}}"</h3>
+				<h3 class="text-center font-weight-bold mt-5 ng-cloak" style="color: red;" ng-if="noResults">No results for "{{currentTopic}}" please try again</h3>
 				<div ng-if="tweetsByTopic" class="row mt-3 justify-content-md-center">
 				
 					<div class="tweet-box col-5" ng-repeat="tweet in tweetsByTopic">
@@ -49,12 +54,12 @@
 							<div class="col-2 text-center" style="padding:12px;">
 								<img class="user-image" src="{{tweet.user.profile_image_url}}" alt="profile-picture">
 							</div>
-							<div class="col-lg" style="padding:10px;">
+							<div class="col-lg" style="padding:10px 10px 0 10px;">
 								<p class="user-info">Followers: <span style="font-weight:normal">{{tweet.user.followers_count}}</span></p>
 								<p class="user-info">Friends: <span style="font-weight:normal">{{tweet.user.friends_count}}</span></p>
 							</div>
 						</div>
-						<p class="user-info">{{tweet.user.name}} <a class="user-display-name" href="{{tweet.user.profile_link}}">@{{tweet.user.screen_name}}</a></p>
+						<p class="user-info">{{tweet.user.name}} <a class="user-display-name" href="{{tweet.user.profile_link}}" target="_blank">@{{tweet.user.screen_name}}</a></p>
 						<div class="row single-tweet">
 							<div class="col-12">
 								<a class="tweet-link" href="{{tweet.link}}" target="_blank">{{tweet.full_text}}</a>
@@ -93,12 +98,5 @@
 			</div>
 		</div>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script src="https://code.angularjs.org/1.4.3/angular.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular-sanitize.js"></script>
-    <script src="js/app.js"></script>
-    <script src="js/factories/tweetByTopicFactory.js"></script>
-    <script src="js/controllers/tweetByTopicController.js"></script>
   </body>
 </html>

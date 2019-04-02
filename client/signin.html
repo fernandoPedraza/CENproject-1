@@ -17,12 +17,12 @@
 		<div class="signin-content" ng-controller="UsersController">
 			<div class="row" style="width:100%;">
 				<div class="col-7">
+					<div class="alert alert-danger ng-cloak text-center" role="alert" ng-if="flashMessageRegister">{{flashMessageRegister}}</div>
 					<div class="signup-box">
 						<form>
 							<div class="row">
 								<div class="col">
 									<h4>CREATE A NEW ACCOUNT</h4>
-									<p class="individual-alert ng-cloak text-center" ng-if="flashMessageRegister">{{flashMessageRegister}}</p>
 								</div>
 							</div>
 							<div class="row">
@@ -47,12 +47,12 @@
 					</div>
 				</div>
 				<div class="col-4" ng-controller="UsersController">
+					<div class="alert alert-danger ng-cloak text-center" role="alert" ng-if="flashMessageLogin">{{flashMessageLogin}}</div>
 					<div class="login-box">
 						<form>
 							<div class="row">
 								<div class="col">
 									<h4>USER SIGN-IN</h4>
-									<p class="individual-alert ng-cloak text-center" ng-if="flashMessageLogin">{{flashMessageLogin}}</p>
 								</div>
 							</div>
 							<div class="row">

@@ -144,20 +144,22 @@ article[data-scribe] {
 	text-decoration:none;
 }
 .home-content .isBlack a {
-	background-color:#1da1f2;
-}
-.home-content .tweet-box {
-	padding-bottom:10px;
-	background-color: white;
-	border: 1px solid #75c7ff;
-	margin:5px;
+	background-color:#49baff;;
 }
 .home-content .tweet-container {
 	border:1px solid #75c7ff;
 	margin-bottom:7px;
 	padding-bottom:7px;
 }
-.home-content .tweet-box img.user-image {
+.home-content .user-header {
+	height:65px;
+	margin-left:0;
+}
+.home-content .user-image-container {
+	padding:12px;
+	max-width:12%;
+}
+.home-content img.user-image {
 	border-radius:50%;
 }
 .home-content p.user-info {
@@ -165,6 +167,7 @@ article[data-scribe] {
 	margin:0 0 5px 0;
 }
 .home-content .user-display-name {
+	text-decoration:none;
 	color:#888787;
 	font-weight:normal;
 }
@@ -203,6 +206,7 @@ article[data-scribe] {
 	font-size:10px;
 	color:#888787;
 }
+.home-content .user-display-name:hover {color:#1da1f2;}
 .home-content .single-tweet:hover {background-color:#ebf9ff;}
 
 /*---------------------- Search by Topic ------------------------*/
@@ -225,6 +229,7 @@ article[data-scribe] {
 	margin:0 0 5px 0;
 }
 .search-topic-content .user-display-name {
+	text-decoration:none;
 	color:#888787;
 	font-weight:normal;
 }
@@ -264,11 +269,37 @@ article[data-scribe] {
 	font-size:10px;
 	color:#888787;
 }
+.search-topic-content .user-display-name:hover {color:#1da1f2;}
 .search-topic-content .single-tweet:hover {background-color:#ebf9ff;}
 
 /*--------------------Search by Location--------------------*/
+.search-location-content .topic-tile {
+	display:flex;
+	align-items:center;
+	height:114px;
+	max-width:20%;
+	padding:0;
+	background-color:#cae7ff;
+	border:5px solid white;
+}
+.search-location-content .isBlack {
+	background-color:#49baff;
+}
+.search-location-content .topic-link {
+	text-decoration:none;
+	width:100%;
+	height:100%;
+}
+.search-location-content .topic-link p {
+	word-wrap:break-word;
+	color:black;
+	padding-top:40px;
+	margin:0;
+	width:100%;
+	height:100%;
+}
 
-
+.search-location-content .topic-tile:hover {background-color:#edf7ff;}
 
 /*----------------------- Sign In ----------------------*/
 .header .login-title {

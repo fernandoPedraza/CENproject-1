@@ -2,7 +2,7 @@
 <html>
   <head>
 		<title>TweetApp</title>
-		<link rel="icon" href="images/favicon.png">
+		<link rel="icon" href="http://www.stickpng.com/assets/images/580b57fcd9996e24bc43c53e.png">
 		<link href="styles/style.css" rel="stylesheet" type="text/css"/>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 		<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -45,23 +45,24 @@
 					</form>
 				</div>
 			</div>
-		</div>
-
-		<div class="container">
-			<h3 class="text-center ng-cloak" ng-if="currentLocation && trendsByLocation">Showing results for: {{currentLocation}}</h3>
-			<p class="text-center mt-2 ng-cloak" ng-if="currentLocation && trendsByLocation">Not what you were expecting? Try to be more specific</p>
-			<h3 class="text-center font-weight-bold mt-5 ng-cloak" style="color: red;" ng-if="noResults">No results for "{{currentLocation}}" please try again</h3>
-		</div>
-		<div class="container-fluid">
-				<div id="chart_div"></div>
-		</div>
-		<div class="container">
-			<h4 ng-if="trendsByLocation" class="text-center mt-3 ng-cloak">Trends</h4>
-			<div ng-if="trendsByLocation" class="row mt-2 ng-cloak">
-				<div class="col-4 p-4" ng-repeat="trend in trendsByLocation" style="background-color: lightskyblue; border: 10px solid white;">
-					<a href="javascript:;" ng-click="searchTopic($index)"><p class="text-center font-weight-bold pt-3" style="color: black;">{{trend.name}}</p></a>
+			<div class="container">
+				<h3 class="text-center ng-cloak" ng-if="currentLocation && trendsByLocation">Showing results for: "{{currentLocation}}"</h3>
+				<p class="text-center mt-2 mb-0 ng-cloak" ng-if="currentLocation && trendsByLocation">Not what you were expecting? Try to be more specific</p>
+				<h3 class="text-center font-weight-bold mt-5 ng-cloak" style="color: red;" ng-if="noResults">No results for "{{currentLocation}}" please try again</h3>
+			</div>
+			<div class="container-fluid">
+					<div id="chart_div"></div>
+			</div>
+			<div class="container" style="margin-bottom:20px;">
+				<h4 ng-if="trendsByLocation" class="text-center mt-3 ng-cloak">Trends in {{currentLocation}}</h4>
+				<div ng-if="trendsByLocation" class="row mt-2 ng-cloak">
+					<div class="col-4 justify-contents-center topic-tile" ng-class="{isBlack: $index % 2 == 1}" ng-repeat="trend in trendsByLocation">
+						<a class="topic-link" href="javascript:;" ng-click="searchTopic($index)">
+							<p class="text-center font-weight-bold">{{trend.name}}</p>
+						</a>
+					</div>
 				</div>
 			</div>
-    </div>
+		</div>
   </body>
 </html>

@@ -62,7 +62,6 @@ angular.module('data').controller('DataController', ['$scope', '$window', 'Data'
         if (response.data.success && response.data.tweets.length > 0) {
           $scope.topTweets = [];
           var tweets = response.data.tweets;
-          console.log(tweets);
           var max;
           if (tweets.length < 9) {
             max = tweets.length;

@@ -1,5 +1,5 @@
 {
-  "name": "Twitter data visualization application",
+  "name": "tweet-app",
   "version": "1.0.0",
   "description": "Routing server-side requests using ExpressJS",
   "main": "server.js",

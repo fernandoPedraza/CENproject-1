@@ -1,0 +1,362 @@
+.individual-alert {
+	color: red;
+}
+a { outline:none; }
+
+a img {
+	border:0;
+	display:block;
+}
+html body {
+	margin:0;
+	background-color: #ffffff;
+	height:100%;
+}
+body h1, body h2, body h3, body h4, body h5, body h6 {
+	font-family: Anton, sans-serif;
+	margin:0;
+}
+article[data-scribe] {
+	display:none;
+}
+.home-content .MediaCard, body .MediaCard--mediaForward, body .cards-multimedia, body .customisable-border {
+	display:none;
+}
+
+/*------------------------- Header ------------------------*/
+.header {
+	width:100%;
+	height:60px;
+	background-color: #1da1f2;
+	border-bottom: black solid .5px;
+}
+.header-wrapper {
+	z-index:3;
+	position:fixed;
+	background-color:#1da1f2;
+	width:100%;
+	height:60px;
+	margin:0;
+	border-bottom:black solid .5px;
+}
+.header-container {
+	margin: 0 0 0 15px;
+	width:97%;
+	height:64px;
+	overflow:hidden;
+}
+.header a#logo {
+	display:inline-block;
+	float:left;
+	margin: 6px 10px 0 0px;
+}
+.header ul.navigation {
+	margin-left:50px;
+	float:left;
+	list-style:none;
+	overflow:hidden;
+}
+.header ul.nav-title {
+	padding:0;
+	float:left;
+	margin:auto;
+	margin-right:50px;
+	list-style:none;
+	font-size: 30px;
+}
+.header ul.nav-title a {
+	font-size:30px;
+	padding: 0 15px 0 15px;
+	letter-spacing: .02em;
+}
+.header ul.nav-logout {
+	float:right;
+	list-style:none;
+	margin:auto;
+}
+.header ul li {
+	float:left;
+}
+.header ul li.selected {
+	background-color:white;
+	height:60px;
+}
+.header ul li a {
+	color:black;
+	display:block;
+	font-family:"Palatino Linotype", "Book Antiqua", Palatino, serif;
+	font-size:17px;
+	height:60px;
+	letter-spacing:.075em;
+	line-height:62px;
+	padding:0 25px;
+	text-decoration:none;
+}
+.header ul.navigation li.selected div.dropdown a.sub-selected {
+	color:white;
+	background:#0024db;
+}
+
+.header ul li a:hover { color:white; }
+.header ul.nav-title li a:hover { color:black; }
+
+.header ul li.selected:hover a { color:black; }
+
+/*------------------------- Home ------------------------*/
+.home-content {
+	width:100%;
+}
+.home-content h1 {
+	text-align:center;
+	margin: 20px 0 0 0;
+}
+.home-content h3 {
+	text-align:center;
+}
+.home-content table td {
+	text-align:center;
+}
+.home-content .container{
+	max-width:100%;
+}
+.home-content .container h3 {
+	padding:0;
+	text-align:center;
+}
+.home-content .col-md-7 {
+	border-left: gray solid .5px;
+}
+.home-content .topic-tile {
+	background-color:#cae7ff;
+	border:2px solid white;
+	display:flex;
+	align-items:center;
+	height:55px;
+	word-wrap:break-word;
+	padding:0;
+}
+.home-content .topic-tile:hover a {background-color:#edf7ff;}
+
+.home-content .topic-link {
+	height:100%;
+	width:100%;
+	color:black;
+	text-decoration:none;
+}
+.home-content .isBlack a {
+	background-color:#49baff;;
+}
+.home-content .tweet-container {
+	border:1px solid #75c7ff;
+	margin-bottom:7px;
+	padding-bottom:7px;
+}
+.home-content .user-header {
+	height:65px;
+	margin-left:0;
+}
+.home-content .user-image-container {
+	padding:12px;
+	max-width:12%;
+}
+.home-content img.user-image {
+	border-radius:50%;
+}
+.home-content p.user-info {
+	font-weight:bold;
+	margin:0 0 5px 0;
+}
+.home-content .user-display-name {
+	text-decoration:none;
+	color:#888787;
+	font-weight:normal;
+}
+.home-content .single-tweet {
+	border:1px solid #f0efef;
+	padding:0;
+	margin:1px 5px 0 45px;
+}
+.home-content .single-tweet div{
+	padding:0;
+}
+.home-content .tweet-link {
+	overflow:hidden;
+	padding:5px 10px 5px 10px;
+	color:black;
+	text-decoration:none;
+	display:block;
+	width:100%;
+	margin-bottom:3px;
+}
+.home-content .tweet-date{
+	margin:0 10px 0 0;
+	text-align:right;
+	font-size:10px;
+	color:#888787;
+}
+.home-content .tweet-retweets{
+	margin:0 10px 0 0;
+	text-align:left;
+	font-size:10px;
+	color:#888787;
+}
+.home-content .tweet-likes{
+	margin:0 10px 0 0;
+	text-align:left;
+	font-size:10px;
+	color:#888787;
+}
+.home-content .user-display-name:hover {color:#1da1f2;}
+.home-content .single-tweet:hover {background-color:#ebf9ff;}
+
+/*---------------------- Search by Topic ------------------------*/
+.searchbar-container {
+	margin:auto;
+	margin-top: 20px;
+	width:30%;
+}
+.search-topic-content .tweet-box {
+	padding-bottom:10px;
+	background-color: white;
+	border: 1px solid #75c7ff;
+	margin:5px;
+}
+.search-topic-content .tweet-box img.user-image {
+	border-radius:50%;
+}
+.search-topic-content p.user-info {
+	font-weight:bold;
+	margin:0 0 5px 0;
+}
+.search-topic-content .user-display-name {
+	text-decoration:none;
+	color:#888787;
+	font-weight:normal;
+}
+.search-topic-content .single-tweet {
+	border:1px solid #f0efef;
+	padding:0;
+	margin:1px 5px 0 45px;
+}
+.search-topic-content .single-tweet div{
+	padding:0;
+}
+.search-topic-content .tweet-link {
+	overflow:hidden;
+
+	padding:5px 10px 5px 10px;
+	color:black;
+	text-decoration:none;
+	display:block;
+	width:100%;
+	margin-bottom:3px;
+}
+.search-topic-content .tweet-date{
+	margin:0 10px 0 0;
+	text-align:right;
+	font-size:10px;
+	color:#888787;
+}
+.search-topic-content .tweet-retweets{
+	margin:0 10px 0 0;
+	text-align:left;
+	font-size:10px;
+	color:#888787;
+}
+.search-topic-content .tweet-likes {
+	margin:0 10px 0 0;
+	text-align:left;
+	font-size:10px;
+	color:#888787;
+}
+.search-topic-content .user-display-name:hover {color:#1da1f2;}
+.search-topic-content .single-tweet:hover {background-color:#ebf9ff;}
+
+/*--------------------Search by Location--------------------*/
+.search-location-content .topic-tile {
+	display:flex;
+	align-items:center;
+	height:114px;
+	max-width:20%;
+	padding:0;
+	background-color:#cae7ff;
+	border:5px solid white;
+}
+.search-location-content .isBlack {
+	background-color:#49baff;
+}
+.search-location-content .topic-link {
+	text-decoration:none;
+	width:100%;
+	height:100%;
+}
+.search-location-content .topic-link p {
+	word-wrap:break-word;
+	color:black;
+	padding-top:40px;
+	margin:0;
+	width:100%;
+	height:100%;
+}
+
+.search-location-content .topic-tile:hover {background-color:#edf7ff;}
+
+/*----------------------- Sign In ----------------------*/
+.header .login-title {
+	margin:0 auto;
+	width:300px;
+	height:100%
+}
+.header .login-title h1{
+	font-family:"Palatino Linotype", "Book Antiqua", Palatino, serif;
+	padding-top:5px;
+	height:100%
+}
+.signin-content {
+	height:100%;
+}
+.signin-content .login-box {
+	height:270px;
+	margin:100px 20px 0 0;
+	padding:20px 20px 25px 20px;
+	border:2px solid #1d5dc4;
+	border-radius:8px;
+	box-shadow:0 0 3px inset #1da1f2;
+	background-color: #f7f7f7;
+}
+.signin-content .col-7 {
+	margin:15px 55px 0 35px;
+	padding:0;
+	border-right: black solid .5px;
+}
+.signin-content .signup-box {
+	background-color:#c6e4ffba;
+	width:80%;
+	padding:22px 20px 20px 20px;
+	margin:20px auto 15px auto;
+}
+.signin-content .login-box p {
+	margin-bottom:30px;
+}
+.signin-content .signup-box p {
+	margin:0;
+}
+.signin-content .login-box .col-sm input {
+	background-color:#55adee54;
+	margin-bottom:25px;
+	width:100%;
+}
+.signin-content .signup-box .col input {
+	background-color:white;
+	margin-bottom:16px;
+	width:100%;
+}
+.signin-content h4 {
+	font-weight:bold;
+	text-align:center;
+	margin-bottom:15px;
+}
+.signin-content .signin-button, .signup-button {
+	width:40%;
+	height:40px;
+}

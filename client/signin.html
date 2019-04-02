@@ -2,7 +2,7 @@
 <html>
   <head>
 	<title>TweetApp</title>
-	<link rel="icon" href="http://www.stickpng.com/assets/images/580b57fcd9996e24bc43c53e.png">
+	<link rel="icon" href="images/favicon.png">
 	<link href="styles/style.css" rel="stylesheet" type="text/css"/>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   </head>
@@ -17,12 +17,12 @@
 		<div class="signin-content" ng-controller="UsersController">
 			<div class="row" style="width:100%;">
 				<div class="col-7">
+					<div class="alert alert-danger ng-cloak text-center mt-3" role="alert" ng-if="flashMessageRegister">{{flashMessageRegister}}</div>
 					<div class="signup-box">
 						<form>
 							<div class="row">
 								<div class="col">
 									<h4>CREATE A NEW ACCOUNT</h4>
-									<p class="individual-alert ng-cloak text-center" ng-if="flashMessageRegister">{{flashMessageRegister}}</p>
 								</div>
 							</div>
 							<div class="row">
@@ -47,12 +47,12 @@
 					</div>
 				</div>
 				<div class="col-4" ng-controller="UsersController">
+					<div class="alert alert-danger ng-cloak text-center" role="alert" ng-if="flashMessageLogin">{{flashMessageLogin}}</div>
 					<div class="login-box">
 						<form>
 							<div class="row">
 								<div class="col">
 									<h4>USER SIGN-IN</h4>
-									<p class="individual-alert ng-cloak text-center" ng-if="flashMessageLogin">{{flashMessageLogin}}</p>
 								</div>
 							</div>
 							<div class="row">

@@ -13,6 +13,8 @@ angular.module('users').controller('UsersController', ['$scope', '$window', 'Use
     $scope.noEmailMatch = undefined;
 
     $scope.registerUser = function() {
+      $scope.flashMessageRegister = undefined;
+      $scope.flashMessageLogin = undefined;
       /**TODO
       *Save the article using the Listings factory. If the object is successfully
       saved redirect back to the list page. Otherwise, display the error
@@ -103,16 +105,11 @@ angular.module('users').controller('UsersController', ['$scope', '$window', 'Use
       };
 
         Users.registerUser(obj).then(function(response) {
-          console.log(response);
           if (response.data.success) {
             $window.location.href = "/";
             $window.localStorage.setItem('token', response.data.token);
+            $window.localStorage.setItem('username', response.data.username);
           } else {
-            var errmsg = response.data.msg;
-            // if (errmsg.includes("$username")) {
-            //   $scope.flashMessageRegister = "Registration failed, this username is taken, please try again"
-            // } else if (errmsg.includes("$email")) {
-            //   $scope.flashMessageRegister = "Registration failed, this email has already been used, please try again"
             $scope.flashMessageRegister = "Registration failed";
           }
         }, function(error) {
@@ -121,6 +118,8 @@ angular.module('users').controller('UsersController', ['$scope', '$window', 'Use
     };
 
     $scope.loginUser = function() {
+      $scope.flashMessageRegister = undefined;
+      $scope.flashMessageLogin = undefined;
       $scope.noLogUsername = 'This field is required'
       $scope.noLogPassword = 'This field is required'
 
@@ -149,10 +148,10 @@ angular.module('users').controller('UsersController', ['$scope', '$window', 'Use
       };
 
       Users.loginUser(obj).then(function(response) {
-        console.log(response.data.success);
         if (response.data.success) {
           $window.location.href = "/";
           $window.localStorage.setItem('token', response.data.token);
+          $window.localStorage.setItem('username', response.data.username);
         } else {
           $scope.flashMessageLogin = "Login failed"; 
         }

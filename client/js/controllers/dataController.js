@@ -18,6 +18,12 @@ angular.module('data').controller('DataController', ['$scope', '$window', 'Data'
       $window.localStorage.removeItem('topic');
     }
 
+    if ($window.localStorage.getItem('username')) {
+      var username = $window.localStorage.getItem('username');
+      $scope.welcomeMessage = 'Welcome, ' + username + '!';
+      $window.localStorage.removeItem('username');
+    }
+
     Data.getGlobalTopics().then(function(response) {
       if (response.data.notAuthorized) {
         // not authorized
@@ -56,7 +62,6 @@ angular.module('data').controller('DataController', ['$scope', '$window', 'Data'
         if (response.data.success && response.data.tweets.length > 0) {
           $scope.topTweets = [];
           var tweets = response.data.tweets;
-          console.log(tweets);
           var max;
           if (tweets.length < 9) {
             max = tweets.length;

@@ -33,21 +33,28 @@ angular.module('data').controller('DataController', ['$scope', '$window', 'Data'
       // Create the data table.
       var rows = [['Name', 'Volume', { role: 'style' }]];
       var max = 20;
-      for (var i = 0; i < max; i++) {
+      for (var c = 0, i = 0; i < max; i++,c++) {
         if ($scope.top50topics[i].tweet_volume <= 0) {
           max += 1;
+          c--;
           continue
         }
-        var topic = [$scope.top50topics[i].name, $scope.top50topics[i].tweet_volume, 'fill-color: #80ccff'];
+        var topic;
+        if (c % 2 == 0)
+          topic = [$scope.top50topics[i].name, $scope.top50topics[i].tweet_volume, 'fill-color: #038de2'];
+        else
+          topic = [$scope.top50topics[i].name, $scope.top50topics[i].tweet_volume, 'fill-color: #cae7ff'];
         rows.push(topic);
       }
       var data = google.visualization.arrayToDataTable(rows);
 
       // Set chart options
-      var options = { titlePosition: 'none',
-                      width:$window.innerWidth - 50,
-                      height:400,
-                      legend:{'position':'none'}
+      var options = { 'animation':{startup:true, duration:1000, easing:'out'},
+                      'titlePosition': "none",
+                      'bar': {groupWidth: "100%"},
+                      'width':$window.innerWidth - 50,
+                      'height':400,
+                      'legend':{position:"none"}
                     };
 
       // Instantiate and draw our chart, passing in some options.

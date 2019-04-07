@@ -2,7 +2,7 @@
 <html>
   <head>
 		<title>TweetApp</title>
-		<link rel="icon" href="http://www.stickpng.com/assets/images/580b57fcd9996e24bc43c53e.png">
+		<link rel="icon" href="images/favicon.png">
 		<link href="styles/style.css" rel="stylesheet" type="text/css"/>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 		<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -54,7 +54,7 @@
 					<div id="chart_div"></div>
 			</div>
 			<div class="container" style="margin-bottom:20px;">
-				<h4 ng-if="trendsByLocation" class="text-center mt-3 ng-cloak">Trends in {{currentLocation}}</h4>
+				<h4 ng-if="trendsByLocation" class="text-center mt-3 ng-cloak">Trends</h4>
 				<div ng-if="trendsByLocation" class="row mt-2 ng-cloak">
 					<div class="col-4 justify-contents-center topic-tile" ng-class="{isBlack: $index % 2 == 1}" ng-repeat="trend in trendsByLocation">
 						<a class="topic-link" href="javascript:;" ng-click="searchTopic($index)">

@@ -33,20 +33,36 @@ angular.module('tweet_by_location').controller('TweetByLocationController', ['$s
             max = trends.length
           }
           for (var i = 0; i < max; i++) {
-            $scope.trendsByLocation.push(trends[i]);
-            if (trends[i].tweet_volume <= 0) {
-              continue
+            var rows = [['Name', 'Volume', { role: 'style' }]];
+            var max;
+            if (trends.length > 20) {
+              max = 20;
+            } else {
+              max = trends.length
             }
-            var trend = [trends[i].name, trends[i].tweet_volume, 'fill-color: #80ccff'];
-            rows.push(trend);
+            for (var c = 0, i = 0; i < max; i++,c++) {
+              $scope.trendsByLocation.push(trends[i]);
+              if (trends[i].tweet_volume <= 0) {
+                c--;
+                continue
+              }
+                var trend;
+                if (c % 2 == 0)
+                  trend = [trends[i].name, trends[i].tweet_volume, 'fill-color: #038de2'];
+                else
+                  trend = [trends[i].name, trends[i].tweet_volume, 'fill-color: #cae7ff'];
+                rows.push(trend);
+            }
           }
           var data = google.visualization.arrayToDataTable(rows);
 
           // Set chart options
-          var options = { titlePosition:'none',
-                          width:$window.innerWidth - 50,
-                          height:400,
-                          legend:{'position':'none'}
+          var options = { 'animation':{startup:true, duration:1000, easing:'out'},
+                          'titlePosition': "none",
+                          'bar': {groupWidth: "100%"},
+                          'width':$window.innerWidth - 50,
+                          'height':400,
+                          'legend':{position:"none"}
                         };
 
           // Instantiate and draw our chart, passing in some options.

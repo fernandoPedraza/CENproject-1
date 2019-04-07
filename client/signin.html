@@ -34,9 +34,9 @@
 									<p>Confirm Password<span style="color:red;">*</span></p>
 									<input type="password" name="Confirm-Password" ng-model="register.confpassword"><p ng-if="noConfirmPassword" class="individual-alert ng-cloak">{{noConfirmPassword}}</p><p ng-if="noPasswordMatch" class="individual-alert ng-cloak">{{noPasswordMatch}}</p>
 									<p>Email<span style="color:red;">*</span></p>
-									<input type="text" name="Email" ng-model="register.email"><p ng-if="noEmail" class="individual-alert ng-cloak">{{noEmail}}</p><p ng-if="noEmailMatch" class="individual-alert ng-cloak">{{noEmailMatch}}</p><p class="individual-alert ng-cloak" ng-if="!noEmailMatch && notValidEmail">{{notValidEmail}}</p>
+									<input type="text" name="Email" ng-model="register.email"><p ng-if="noEmail" class="individual-alert ng-cloak">{{noEmail}}</p><p ng-if="noEmailMatch" class="individual-alert ng-cloak">{{noEmailMatch}}</p><p class="individual-alert ng-cloak" ng-if="!noEmail && !noEmailMatch && notValidEmail">{{notValidEmail}}</p>
 									<p>Confirm Email<span style="color:red;">*</span></p>
-									<input type="text" name="Confirm-Email" ng-model="register.confemail"><p ng-if="noConfirmEmail" class="individual-alert ng-cloak">{{noConfirmEmail}}</p><p ng-if="noEmailMatch" class="individual-alert ng-cloak">{{noEmailMatch}}</p><p class="individual-alert ng-cloak" ng-if="!noEmailMatch && notValidEmail">{{notValidEmail}}</p>
+									<input type="text" name="Confirm-Email" ng-model="register.confemail"><p ng-if="noConfirmEmail" class="individual-alert ng-cloak">{{noConfirmEmail}}</p><p ng-if="noEmailMatch" class="individual-alert ng-cloak">{{noEmailMatch}}</p><p class="individual-alert ng-cloak" ng-if="!noEmail && !noEmailMatch && notValidEmail">{{notValidEmail}}</p>
 								</div>
 							</div>
 						</form>

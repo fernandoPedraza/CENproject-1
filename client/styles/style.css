@@ -219,10 +219,6 @@ img.like-icon {
 
 /*---------------------- Search by Topic ------------------------*/
 
-.dropright {
-	float: right;
-	display: inline;
-}
 .searchbar-container {
 	margin:auto;
 	margin-top: 20px;

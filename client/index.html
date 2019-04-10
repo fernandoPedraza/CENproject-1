@@ -47,14 +47,14 @@
     						<h3 class="my-3">Top 50 Topics</h3>
                 <div class="row justify-content-md-center" style="width:95%; margin:8px auto auto auto;">
                   <div class="col-4 text-center justify-content-center topic-tile" ng-class="{isBlack: $index % 2 == 1}" ng-repeat="topic in top50topics">
-                    <a class="topic-link" href="javascript:;" ng-click="searchTopic($index)">{{topic.name}}</a>
+                    <a class="topic-link justify-content-center" href="javascript:;" ng-click="searchTopic($index)">{{topic.name}}</a>
                   </div>
                 </div>
               </div>
     					<div class="col-md-6 px-1 ng-cloak" ng-if="topTweets" style="max-width:49%;">
     						<h3 class="my-3">Tweets</h3>
                 <div class="row" style="padding:2px 0 0 30px;">
-                  <div class="col-12 px-2 tweet-box" ng-repeat="tweet in topTweets">
+                  <div class="col-12 px-2 tweet-container" ng-repeat="tweet in topTweets">
 										<div class="row user-header">
 											<div class="user-image-container col-2 text-center">
 												<a href="{{tweet.user.profile_link}}" target="_blank"><img class="user-image" src="{{tweet.user.profile_image_url}}" alt="profile-picture"></a>

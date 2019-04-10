@@ -10,10 +10,23 @@ angular.module('tweet_by_topic').controller('TweetByTopicController', ['$scope',
       $window.localStorage.removeItem('location');
     }
 
+    if ($window.localStorage.getItem('result_type_location')) {
+      $window.localStorage.removeItem('result_type_location')
+    }
+
+    if ($window.localStorage.getItem('result_type_topic')) {
+      var result_type = $window.localStorage.getItem('result_type_topic');
+      $scope.result_type = result_type.charAt(0).toUpperCase() +  result_type.slice(1);
+    } else {
+      $scope.result_type = 'Popular';
+    }
+
     $scope.tweetsByTopic = undefined;
     if ($window.localStorage.getItem('topic')) {
       // must be coming from the home page
       var topic = JSON.parse($window.localStorage.getItem('topic'));
+      var res_type = $scope.result_type.charAt(0).toLowerCase() + $scope.result_type.slice(1);
+      topic.result_type = res_type;
       $scope.currentTopic = topic.name;
       Data.getTweetsByTopic(topic).then(function(response) {
         if (response.data.notAuthorized) {
@@ -87,17 +100,24 @@ angular.module('tweet_by_topic').controller('TweetByTopicController', ['$scope',
       }
     }
 
+    $scope.setResultType = function(result_type) {
+      $scope.result_type = result_type.charAt(0).toUpperCase() +  result_type.slice(1);
+      $window.localStorage.setItem('result_type_topic', result_type) 
+    }
 
     $scope.searchForTopic = function() {
       var topic = { name: $scope.topicQuery, query: $scope.topicQuery }
       $window.localStorage.setItem('topic', JSON.stringify(topic));
     }
 
-    $scope.removeTopic = function() {
-      if ($window.localStorage.getItem('topic')) {
-        $window.localStorage.removeItem('topic');
-      }
-    }
+    // $scope.removeTopic = function() {
+    //   if ($window.localStorage.getItem('topic')) {
+    //     $window.localStorage.removeItem('topic');
+    //   }
+    //   if ($window.localStorage.getItem('result_type')) {
+    //     $window.localStorage.removeItem('result_type');
+    //   }
+    // }
 
     $scope.logout = function() {
       $window.localStorage.clear();

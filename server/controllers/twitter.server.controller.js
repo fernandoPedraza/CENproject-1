@@ -54,7 +54,7 @@ exports.getEmbeddedTweet = function(req, res) {
 
 exports.getTweetsByTopic = function(req, res) {
   var topic = req.body;
-  T.get('search/tweets', { q: topic.query, count: 50, result_type: 'popular', tweet_mode: 'extended' }, function(err, data, response) {
+  T.get('search/tweets', { q: topic.query, count: 50, result_type: topic.result_type, tweet_mode: 'extended' }, function(err, data, response) {
     if (err) return res.json({ success: false, msg: 'Failed to get tweets: ' +err });
     return res.json({ success: true, tweets: data.statuses });
   })
@@ -72,7 +72,7 @@ exports.getTweetsByLocation = function(req, res) {
     var lat = data.latitude.toString();
     var long = data.longitude.toString();
     var geo = lat + ',' + long + ',1mi';
-    T.get('search/tweets', { q: '?', count: 9, result_type: 'popular', tweet_mode: 'extended',  geocode: geo }, function(err, data, response) {
+    T.get('search/tweets', { q: '?', count: 9, result_type: location.result_type, tweet_mode: 'extended',  geocode: geo }, function(err, data, response) {
       if (err) return res.json({ success: false, msg: 'Failed to get tweets: ' +err });
       return res.json({ success: true, tweets: data.statuses, locationFound: locationFound });
     });

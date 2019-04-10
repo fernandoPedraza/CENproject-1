@@ -218,6 +218,11 @@ img.like-icon {
 .home-content .single-tweet:hover {background-color:#ebf9ff;}
 
 /*---------------------- Search by Topic ------------------------*/
+
+.dropright {
+	float: right;
+	display: inline;
+}
 .searchbar-container {
 	margin:auto;
 	margin-top: 20px;

@@ -16,8 +16,22 @@ angular.module('tweet_by_location').controller('TweetByLocationController', ['$s
       $window.localStorage.removeItem('topic');
     }
 
+    if ($window.localStorage.getItem('result_type_topic')) {
+      $window.localStorage.removeItem('result_type_topic');
+    }
+
+     if ($window.localStorage.getItem('result_type_location')) {
+      var result_type = $window.localStorage.getItem('result_type_location');
+      $scope.result_type = result_type.charAt(0).toUpperCase() +  result_type.slice(1);
+    } else {
+      $scope.result_type = 'Popular';
+    }
+
+
     if ($window.localStorage.getItem('location')) {
       var location = { location: $window.localStorage.getItem('location') };
+      var res_type = $scope.result_type.charAt(0).toLowerCase() + $scope.result_type.slice(1);
+      location.result_type = res_type;
       $scope.currentLocation = location.location;
       Data.getTrendsByLocation(location).then(function(response) {
         if (response.data.success && response.data.trending_topics.length > 0) {
@@ -74,6 +88,11 @@ angular.module('tweet_by_location').controller('TweetByLocationController', ['$s
         }
       });
     } 
+
+    $scope.setResultType = function(result_type) {
+      $scope.result_type = result_type.charAt(0).toUpperCase() +  result_type.slice(1);
+      $window.localStorage.setItem('result_type_location', result_type) 
+    }
 
     $scope.searchForLocation = function() {
       var location = $scope.locationQuery;

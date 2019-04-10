@@ -13,7 +13,7 @@ html body {
 	height:100%;
 }
 body h1, body h2, body h3, body h4, body h5, body h6 {
-	font-family: Anton, sans-serif;
+	font-family: serif;
 	margin:0;
 }
 article[data-scribe] {
@@ -105,6 +105,7 @@ article[data-scribe] {
 /*------------------------- Home ------------------------*/
 .home-content {
 	width:100%;
+	padding-bottom:50px;
 }
 .home-content h1 {
 	text-align:center;
@@ -142,12 +143,17 @@ article[data-scribe] {
 	width:100%;
 	color:black;
 	text-decoration:none;
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	word-break:break-word;
 }
 .home-content .isBlack a {
 	background-color:#49baff;;
 }
-.home-content .tweet-container {
+.home-content .tweet-box {
 	border:1px solid #75c7ff;
+	box-shadow: 3px 3px 4px 1px #e7f5ff;
 	margin-bottom:7px;
 	padding-bottom:7px;
 }
@@ -174,10 +180,10 @@ article[data-scribe] {
 .home-content .single-tweet {
 	border:1px solid #f0efef;
 	padding:0;
-	margin:1px 5px 0 45px;
+	margin:1px 5px 2px 45px;
 }
 .home-content .single-tweet div{
-	padding:0;
+	padding:0 0 1px 0;
 }
 .home-content .tweet-link {
 	overflow:hidden;
@@ -218,17 +224,33 @@ img.like-icon {
 .home-content .single-tweet:hover {background-color:#ebf9ff;}
 
 /*---------------------- Search by Topic ------------------------*/
+.search-topic-content { padding-bottom: 50px; }
 
-.searchbar-container {
+.search-topic-content .searchbar {
+	float:left;
+	width:300px;
+	margin-right:4px;
+}
+.search-topic-content .searchbar-container {
 	margin:auto;
-	margin-top: 20px;
+	margin-top: 40px;
 	width:30%;
 }
 .search-topic-content .tweet-box {
 	padding-bottom:10px;
 	background-color: white;
 	border: 1px solid #75c7ff;
+	box-shadow: 3px 3px 4px 1px #e7f5ff;
 	margin:5px;
+}
+.search-topic-content .tweet-box .user-header {
+	height:65px;
+	margin-left:0;
+}
+.search-topic-content .tweet-box .user-image-container {
+	max-width:72px;
+	padding:12px;
+	max-width:12%;
 }
 .search-topic-content .tweet-box img.user-image {
 	border-radius:50%;
@@ -245,10 +267,10 @@ img.like-icon {
 .search-topic-content .single-tweet {
 	border:1px solid #f0efef;
 	padding:0;
-	margin:1px 5px 0 45px;
+	margin:1px 5px 2px 45px;
 }
 .search-topic-content .single-tweet div{
-	padding:0;
+	padding:0 0 1px 0;
 }
 .search-topic-content .tweet-link {
 	overflow:hidden;
@@ -282,6 +304,18 @@ img.like-icon {
 .search-topic-content .single-tweet:hover {background-color:#ebf9ff;}
 
 /*--------------------Search by Location--------------------*/
+.search-location-content { padding-bottom:40px }
+
+.search-location-content .searchbar {
+	float:left;
+	width:300px;
+	margin-right:4px;
+}
+.search-location-content .searchbar-container {
+	margin:auto;
+	margin-top: 40px;
+	width:30%;
+}
 .search-location-content .topic-tile {
 	display:flex;
 	align-items:center;

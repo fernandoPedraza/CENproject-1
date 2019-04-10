@@ -37,8 +37,8 @@
 		</div>
 		<div class="search-location-content">
 			<div class="searchbar-container">
-				<div class="active-cyan-3 active-cyan-4 mb-4">
-					<form action="">
+				<div class="active-cyan-3 active-cyan-4 mb-4" style="width:500px;">
+					<form class="searchbar" action="">
 						<input ng-model="locationQuery" class="form-control" type="text" placeholder="Search by Location" aria-label="Search">
 						<input type="submit" style="display: none" ng-click="searchForLocation()"/>
 					</form>
@@ -65,7 +65,7 @@
 					<div id="chart_div"></div>
 			</div>
 			<div class="container" style="margin-bottom:20px;">
-				<h4 ng-if="trendsByLocation" class="text-center mt-3 ng-cloak">Trends</h4>
+				<h3 ng-if="trendsByLocation" class="text-center mt-3 ng-cloak">Trends</h4>
 				<div ng-if="trendsByLocation" class="row mt-2 ng-cloak">
 					<div class="col-4 justify-contents-center topic-tile" ng-class="{isBlack: $index % 2 == 1}" ng-repeat="trend in trendsByLocation">
 						<a class="topic-link" href="javascript:;" ng-click="searchTopic($index)">

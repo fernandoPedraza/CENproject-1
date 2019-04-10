@@ -17,6 +17,12 @@ angular.module('data').controller('DataController', ['$scope', '$window', 'Data'
     if ($window.localStorage.getItem('topic')) {
       $window.localStorage.removeItem('topic');
     }
+    if ($window.localStorage.getItem('result_type_topic')) {
+      $window.localStorage.removeItem('result_type_topic');
+    }
+    if ($window.localStorage.getItem('result_type_location')) {
+      $window.localStorage.removeItem('result_type_location');
+    }
 
     if ($window.localStorage.getItem('username')) {
       var username = $window.localStorage.getItem('username');

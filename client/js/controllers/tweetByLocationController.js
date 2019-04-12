@@ -34,6 +34,8 @@ angular.module('tweet_by_location').controller('TweetByLocationController', ['$s
       Data.getTrendsByLocation(location).then(function(response) {
         if (response.data.success && response.data.trending_topics.length > 0) {
           $scope.currentLocation = response.data.location_found;
+          // save the actual location
+          $window.localStorage.setItem('location', $scope.currentLocation)
           $scope.trendsByLocation = []
           var trends = response.data.trending_topics;
            // Create the data table.
@@ -88,14 +90,23 @@ angular.module('tweet_by_location').controller('TweetByLocationController', ['$s
     }
 
     if ($window.localStorage.getItem('location')) {
+      $scope.loading = true; 
       getTrendsByLocation();
+      $scope.loading = undefined;
     } 
 
     $scope.setResultType = function(result_type) {
+      // could implement it such that if the same result type is selected the results aren't updated... not sure if necessary
+      var prev_res_type = '';
+      // if (window.localStorage.getItem('result_type_location')) {
+      //   prev_res_type = $window.localStorage.getItem('result_type_location')
+      // }
       $scope.result_type = result_type.charAt(0).toUpperCase() +  result_type.slice(1);
       $window.localStorage.setItem('result_type_location', result_type) 
-      if ($window.localStorage.getItem('location')) {
+      if ($window.localStorage.getItem('location') && prev_res_type != result_type) {
+        $scope.loading = true;
         getTrendsByLocation();
+        $scope.loading = undefined;
       }
     }
 

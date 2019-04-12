@@ -104,9 +104,14 @@ angular.module('tweet_by_topic').controller('TweetByTopicController', ['$scope',
     }
 
     $scope.setResultType = function(result_type) {
+      // could implement it such that clicking the same result type doesn't change the results... not sure if necessary
+      var prev_res_type = '';
+      // if ($window.localStorage.getItem('result_type_topic')) {
+      //   prev_res_type = $window.localStorage.getItem('result_type_topic'); 
+      // }
       $scope.result_type = result_type.charAt(0).toUpperCase() +  result_type.slice(1);
       $window.localStorage.setItem('result_type_topic', result_type) 
-      if ($window.localStorage.getItem('topic')) {
+      if ($window.localStorage.getItem('topic') && prev_res_type != result_type) {
         getTweetsByTopic();
       }
     }

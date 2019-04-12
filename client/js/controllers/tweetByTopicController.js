@@ -20,10 +20,7 @@ angular.module('tweet_by_topic').controller('TweetByTopicController', ['$scope',
     } else {
       $scope.result_type = 'Popular';
     }
-
-    $scope.tweetsByTopic = undefined;
-    if ($window.localStorage.getItem('topic')) {
-      // must be coming from the home page
+    var getTweetsByTopic = function() {
       var topic = JSON.parse($window.localStorage.getItem('topic'));
       var res_type = $scope.result_type.charAt(0).toLowerCase() + $scope.result_type.slice(1);
       topic.result_type = res_type;
@@ -78,6 +75,12 @@ angular.module('tweet_by_topic').controller('TweetByTopicController', ['$scope',
         }
       })
     }
+
+    $scope.tweetsByTopic = undefined;
+    if ($window.localStorage.getItem('topic')) {
+      getTweetsByTopic();
+    }
+
     var nameExists = function(screen_name) {
       for (j = 0; j < $scope.tweetsByTopic.length; ++j) {
         var tweet = $scope.tweetsByTopic[j];
@@ -103,6 +106,9 @@ angular.module('tweet_by_topic').controller('TweetByTopicController', ['$scope',
     $scope.setResultType = function(result_type) {
       $scope.result_type = result_type.charAt(0).toUpperCase() +  result_type.slice(1);
       $window.localStorage.setItem('result_type_topic', result_type) 
+      if ($window.localStorage.getItem('topic')) {
+        getTweetsByTopic();
+      }
     }
 
     $scope.searchForTopic = function() {

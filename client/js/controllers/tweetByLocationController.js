@@ -26,9 +26,7 @@ angular.module('tweet_by_location').controller('TweetByLocationController', ['$s
     } else {
       $scope.result_type = 'Popular';
     }
-
-
-    if ($window.localStorage.getItem('location')) {
+    var getTrendsByLocation = function() {
       var location = { location: $window.localStorage.getItem('location') };
       var res_type = $scope.result_type.charAt(0).toLowerCase() + $scope.result_type.slice(1);
       location.result_type = res_type;
@@ -87,11 +85,18 @@ angular.module('tweet_by_location').controller('TweetByLocationController', ['$s
           $scope.noResults = true;
         }
       });
+    }
+
+    if ($window.localStorage.getItem('location')) {
+      getTrendsByLocation();
     } 
 
     $scope.setResultType = function(result_type) {
       $scope.result_type = result_type.charAt(0).toUpperCase() +  result_type.slice(1);
       $window.localStorage.setItem('result_type_location', result_type) 
+      if ($window.localStorage.getItem('location')) {
+        getTrendsByLocation();
+      }
     }
 
     $scope.searchForLocation = function() {
